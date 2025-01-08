@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Security.Cryptography;
 
 namespace PastasCSharpNotesAndExamples
@@ -30,25 +31,31 @@ namespace PastasCSharpNotesAndExamples
             TypeOutMessage(message, 50);
         }
 
-
-        static async void TypeOutMessage(string message, int delay)
+        static void TypeOutMessage(string message, int delay)
         {
             int index = 0;
+            Helper.isTyping = true;
+
             while (Helper.isTyping)
             {
                 if (Console.KeyAvailable)
                 {
-                    await Task.Delay(500); // Simulating some process
+                    Console.ReadKey(true); // Consume the key press
+                    Helper.isTyping = false;
 
-                    while (Console.KeyAvailable)
+                    // Print the remaining characters
+                    while (index < message.Length)
                     {
-                        Console.ReadKey(true); // Consume the key press
+                        Console.Write(message[index]);
+                        index++;
                     }
 
-                    Helper.isTyping = false;
-                    bool keepRunning = false;
-
-                    break;
+                    Console.WriteLine();
+                    Console.WriteLine("Press any key to return to the main menu...");
+                    Console.ReadKey(true);
+                    Console.Clear();
+                    ProgramStart.start();
+                    return;
                 }
 
                 if (index < message.Length)
@@ -56,12 +63,6 @@ namespace PastasCSharpNotesAndExamples
                     Console.Write(message[index]);
                     index++;
                     System.Threading.Thread.Sleep(delay);
-                }
-                else
-                {
-                    Helper.isTyping = false;
-                    bool keepRunning = false;
-
                 }
             }
         }
