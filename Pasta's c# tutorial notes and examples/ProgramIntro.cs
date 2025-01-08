@@ -27,11 +27,6 @@ namespace PastasCSharpNotesAndExamples
             Colorful.Console.WriteLine("\tPress any key to continue.");
 
             string message = "Hello, this is typed out one character at a time!";
-            while (Console.KeyAvailable)
-            {
-                Console.ReadKey(true); // Consume any pending key presses
-            }
-            Helper.isTyping = true;
             TypeOutMessage(message, 50);
         }
 
@@ -51,6 +46,8 @@ namespace PastasCSharpNotesAndExamples
                     }
 
                     Helper.isTyping = false;
+                    bool keepRunning = false;
+
                     break;
                 }
 
@@ -63,6 +60,8 @@ namespace PastasCSharpNotesAndExamples
                 else
                 {
                     Helper.isTyping = false;
+                    bool keepRunning = false;
+
                 }
             }
         }

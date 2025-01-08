@@ -16,7 +16,7 @@ namespace PastasCSharpNotesAndExamples
     public class ProgramMainProgram
     {
 
-        public static async void mainMenu()
+        public static async Task mainMenu()
         {
             var defaultColor = Color.FromArgb(242, 159, 15);  //orange color
 
@@ -95,13 +95,15 @@ namespace PastasCSharpNotesAndExamples
 
                             break;
                         case 5:
+                            Helper.isTyping = false;
+
                             await Task.Delay(500); // Simulating some process
 
-                            Helper.isTyping = false;
                             Helper.clearSettings();
-                            Helper.isTyping = false;
-                            SysConsole.Clear();
+
+
                             Program.Main(new string[] { });
+
 
                             break;
                         case 6:
@@ -115,15 +117,9 @@ namespace PastasCSharpNotesAndExamples
                             Helper.writeLine("Invalid option. Please choose a valid option.", Colors.brightRed);
                             break;
                     }
-
-                    // Optionally wait for a key press before clearing to return to menu
-                    if (keepRunning)
-                    {
-                        Helper.writeLine("\nPress any key to return to the main menu...", Colors.defaultColor);
-                        System.Console.ReadKey(); // Wait for user input before clearing
-                        System.Console.Clear(); // Clear console to show the main menu again
-                    }
                 }
+
+
                 catch (FormatException)
                 {
                     //System.Console.Clear();

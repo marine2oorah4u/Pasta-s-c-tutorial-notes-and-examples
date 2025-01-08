@@ -15,7 +15,7 @@ namespace PastasCSharpNotesAndExamples
 {
     class Program
     {
-        public static bool keepRunning = true;
+        public static bool keepRunning;
 
         public static async Task Main(string[] args)
         {
@@ -90,7 +90,7 @@ namespace PastasCSharpNotesAndExamples
                                 System.Console.ResetColor();
                                 await Task.Delay(500); // Simulating some process
                                 System.Console.Clear();
-                                ProgramMainProgram.mainMenu();
+                                await ProgramMainProgram.mainMenu();
 
                                 //ProgramTest.Test();
                                 break;
