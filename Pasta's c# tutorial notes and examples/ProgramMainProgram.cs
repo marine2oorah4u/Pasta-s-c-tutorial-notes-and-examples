@@ -77,6 +77,7 @@ namespace PastasCSharpNotesAndExamples
                         case 1:
                             Colorful.Console.ForegroundColor = Colors.defaultColor;
                             Helper.writeLine("You chose Option 1", Colors.defaultColor);
+                            Colorful.Console.Clear();
                             Colorful.Console.ResetColor();
                             System.Console.ResetColor();
                             Task.Delay(500); // Simulating some process
