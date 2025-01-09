@@ -89,7 +89,6 @@ namespace PastasCSharpNotesAndExamples
                 Colorful.Console.WriteLine();
                 System.Threading.Thread.Sleep(delayBetweenLines);
             }
-            System.Threading.Thread.Sleep(1000);
 
             static void TypeOutMessage(string message, int delay)
             {
@@ -117,6 +116,8 @@ namespace PastasCSharpNotesAndExamples
                         return; // Return to prevent further execution
                     }
 
+
+
                     if (index < message.Length)
                     {
                         Colorful.Console.Write(message[index]);
@@ -126,6 +127,8 @@ namespace PastasCSharpNotesAndExamples
                     else
                     {
                         Helper.isTyping = false; // Ensure this properly stops the loop
+
+                    
                     }
                 }
             }

@@ -108,6 +108,9 @@ namespace PastasCSharpNotesAndExamples
                         Helper.writeLine("\nPress any key to return to the main menu...", Colors.defaultColor);
                         System.Console.ReadKey(); // Wait for user input before clearing
                         System.Console.Clear(); // Clear console to show the main menu again
+                        System.Threading.Thread.Sleep(500);
+                        ProgramStart.start();
+
                     }
                 }
                 catch (FormatException)
@@ -137,9 +140,9 @@ public static class ProgramMainProgram
     public static void mainMenu()
     {
         var defaultColor = Color.FromArgb(242, 159, 15);  //orange color
-
         bool keepRunning = true;
         Helper.isTyping = false;
+        System.Threading.Thread.Sleep(500);
 
         Helper.writeLine("\t\t\n\n\n\tWhat would you like to do?\n \n\n\n\n\n", Colors.blueJayBlue);
 
@@ -181,10 +184,12 @@ public static class ProgramMainProgram
                             Helper.isTyping = false;
 
                             Helper.writeLine("You chose Option 1", Colors.defaultColor);   //for knowledge learned so far
+                        System.Console.Clear();
+                        Colorful.Console.Clear();
+
                         Colorful.Console.ResetColor();
                         System.Console.ResetColor();
                         System.Threading.Thread.Sleep(1000);
-                        System.Console.Clear();
 
                         TotalKnowledeLearned.knowledge();
 
