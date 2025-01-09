@@ -41,6 +41,7 @@ namespace PastasCSharpNotesAndExamples
         public static Color yellowGreen = Color.FromArgb(154, 205, 50);
     }
 
+
     public static class Helper
     {
         public async static void clearSettings()

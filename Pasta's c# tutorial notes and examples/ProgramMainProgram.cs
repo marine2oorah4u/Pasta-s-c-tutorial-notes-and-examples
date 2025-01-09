@@ -26,15 +26,12 @@ namespace PastasCSharpNotesAndExamples
 
 
             Helper.writeLine("\t\t\n\n\n\tWelcome to my program!\n \tWhat do you want to do?\n\n\n\n\n", Colors.defaultColor);
-            Helper.isTyping = false;
 
             bool keepRunning = true;
             while (keepRunning)
             {
 
-                //System.Console.Write("This is ");
-                ////System.Console.Write("highlighted", Color.White, Color.Green);
-                //System.Console.WriteLine(" text.");
+             
                 Helper.writeLine("\t\tChoose an option:\n", Colors.limeGreen);
 
 
@@ -80,7 +77,7 @@ namespace PastasCSharpNotesAndExamples
                             Colorful.Console.Clear();
                             Colorful.Console.ResetColor();
                             System.Console.ResetColor();
-                            Task.Delay(500); // Simulating some process
+                            System.Threading.Thread.Sleep(1000);
 
                             ProgramIntro.Run();        // runs the about me and this program information
                             break;
@@ -89,7 +86,7 @@ namespace PastasCSharpNotesAndExamples
                             // Add your program execution logic here
                             Colorful.Console.ResetColor();
                             System.Console.ResetColor();
-                             Task.Delay(500); // Simulating some process
+                            System.Threading.Thread.Sleep(1000);
                             System.Console.Clear();
                              ProgramMainProgram.mainMenu();
 
@@ -184,9 +181,12 @@ public static class ProgramMainProgram
                             Helper.isTyping = false;
 
                             Helper.writeLine("You chose Option 1", Colors.defaultColor);   //for knowledge learned so far
-                            Helper.clearSettings();
+                        Colorful.Console.ResetColor();
+                        System.Console.ResetColor();
+                        System.Threading.Thread.Sleep(1000);
+                        System.Console.Clear();
 
-                            TotalKnowledeLearned.knowledge();
+                        TotalKnowledeLearned.knowledge();
 
                             //ProgramIntro.Run();
                             break;
@@ -194,11 +194,12 @@ public static class ProgramMainProgram
                             Helper.isTyping = false;
 
                             Helper.writeLine("You chose Option 2", Colors.defaultColor);   // for notes and examples
-                            // Add your program execution logic here
-                            Helper.clearSettings();
-                            //ProgramMainProgram.mainMenu();
+                        Colorful.Console.Clear();
+                        Colorful.Console.ResetColor();
+                        System.Console.ResetColor();
+                        System.Threading.Thread.Sleep(1000);
 
-                            ProgramTest.Test();
+                        ProgramTest.Test();
                             break;
                         case 3:
                             Helper.isTyping = false;
