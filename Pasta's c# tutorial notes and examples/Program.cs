@@ -369,7 +369,11 @@ namespace PastasCSharpNotesAndExamples
             //}
 
 
-            ProgramStart.start();
+            //ProgramStart.start();
+
+            PracticeCode.storing_User_Data_Exercise_5();
+
+
         }
     }
 }
