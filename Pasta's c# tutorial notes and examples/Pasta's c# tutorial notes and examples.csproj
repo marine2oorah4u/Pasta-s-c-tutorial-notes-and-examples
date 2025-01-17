@@ -12,9 +12,16 @@
     <PackageReference Include="Centvrio.Emoji" Version="1.1.6" />
     <PackageReference Include="Colorful.Console" Version="1.2.15" />
     <PackageReference Include="ConsoleUI" Version="1.0.15" />
+    <PackageReference Include="Drastic.Spectre.Console.SkiaSharp" Version="0.49.1" />
     <PackageReference Include="Emojione" Version="4.5.0" />
+    <PackageReference Include="Figgle" Version="0.5.1" />
     <PackageReference Include="GEmojiSharp" Version="4.0.0" />
+    <PackageReference Include="NetAdmin.Spectre.Console.ImageSharp" Version="1.0.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.6" />
     <PackageReference Include="Spectre.Console" Version="0.49.1" />
+    <PackageReference Include="Spectre.Console.Cli" Version="0.49.1" />
+    <PackageReference Include="Terminaux.Figgle" Version="1.12.3" />
+    <PackageReference Include="Textify.Figlet" Version="1.14.0" />
   </ItemGroup>
 
 </Project>

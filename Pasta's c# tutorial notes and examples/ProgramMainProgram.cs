@@ -1,131 +1,143 @@
 ﻿using System;
-using Colorful;
 using SysConsole = System.Console;
-using ColConsole = Colorful.Console;
-
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Drawing;
+using DrawingColor = System.Drawing.Color;
 using ConsoleUI;
+using Spectre.Console;
 using static System.Net.Mime.MediaTypeNames;
 using PastasCSharpNotesAndExamples;
+using Colorful;
 
 namespace PastasCSharpNotesAndExamples
 {
-
-
     public static class ProgramStart
     {
         public static void start()
         {
             Helper.isTyping = false;
 
-            //                     Colorful.Console.BackgroundColor = Color.FromArgb (200,0,200);  background does a highlight of text
+            var loadingGrid = new Grid();
+            loadingGrid.AddColumn(new GridColumn().Width(30));
+            loadingGrid.AddColumn(new GridColumn());
 
+            loadingGrid.AddRow(
+                new Markup("\t\t\n\n"),
+                new Markup("[bold yellow]\t\tLoading...[/]")
+            );
+
+            AnsiConsole.Render(loadingGrid);
+
+            AnsiConsole.Progress()
+                .Columns(new ProgressColumn[]
+                {
+                    new TaskDescriptionColumn(),
+                    new ProgressBarColumn(),
+                    new PercentageColumn(),
+                    new SpinnerColumn(),
+                })
+                .Start(ctx =>
+                {
+                    var task = ctx.AddTask("\t\t   Loading");
+                    while (!task.IsFinished)
+                    {
+                        task.Increment(10);
+                        Thread.Sleep(100);
+                    }
+                });
+
+            Thread.Sleep(100);
+
+            var canvasImage = new CanvasImage("image.png");
+            canvasImage.MaxWidth(15);
+
+            var grid = new Grid();
+            grid.AddColumn(new GridColumn().Width(40));
+            grid.AddColumn(new GridColumn().Width(50));
+            grid.AddRow(Spectre.Console.Text.Empty, canvasImage);
+
+            AnsiConsole.Render(grid);
+
+            var titleRule = new Rule("[bold yellow]Welcome to the Console App[/]").Centered();
+            AnsiConsole.Write(titleRule);
+
+            var figletText = new FigletText("HELLO")
+                .Centered()
+                .Color(Spectre.Console.Color.Blue);
+            AnsiConsole.Render(figletText);
+
+            var separatorRule = new Rule("[bold red]====================[/]").Centered();
+            AnsiConsole.Write(separatorRule);
 
             Helper.writeLine("\t\t\n\n\n\tWelcome to my program!\n \tWhat do you want to do?\n\n\n\n\n", Colors.defaultColor);
 
             bool keepRunning = true;
             while (keepRunning)
             {
-
-             
                 Helper.writeLine("\t\tChoose an option:\n", Colors.limeGreen);
 
-
-                ////////////////////////////////////////////////////////
-
                 Helper.write("\t\t1. ", Colors.numberColor);
-
-                Colorful.Console.ForegroundColor = Colors.lightYellow;
-                Helper.write("About my program.\n", Colors.lightYellow);  //option 1
-                                                                          ////////////////////////////////////////////////////////
-
+                Helper.write("About my program.\n", Colors.lightYellow);
 
                 Helper.write("\t\t2. ", Colors.numberColor);
-
-                Helper.write("Run the program.\n", Colors.salmonOrange);  //option 2
-                                                                          ////////////////////////////////////////////////////////
+                Helper.write("Run the program.\n", Colors.salmonOrange);
 
                 Helper.write("\t\t3. ", Colors.numberColor);
+                Helper.write("Exit the program.\n", Colors.lightPurple);
 
-
-                Helper.write("Exit the program.\n", Colors.lightPurple);  //option 3
-                                                                          ////////////////////////////////////////////////////////
-
-                Colorful.Console.ForegroundColor = Colors.blueJayBlue;
                 Helper.write("\n\n\tEnter your choice: ", Colors.blueJayBlue);
-                //Colorful.Console.ForegroundColor = Color.FromArgb(255, 255, 255);
-
 
                 try
                 {
-                    Colorful.Console.ForegroundColor = Colors.numberColor;
-                    int option = Convert.ToInt32(System.Console.ReadLine());
-
-
-                    // Clear the console to remove the options before executing the selected option
-                    System.Console.Clear();
+                    int option = Convert.ToInt32(SysConsole.ReadLine());
+                    SysConsole.Clear();
 
                     switch (option)
                     {
                         case 1:
-                            Colorful.Console.ForegroundColor = Colors.defaultColor;
                             Helper.writeLine("You chose Option 1", Colors.defaultColor);
+                            SysConsole.Clear();
                             Colorful.Console.Clear();
-                            Colorful.Console.ResetColor();
-                            System.Console.ResetColor();
-                            System.Threading.Thread.Sleep(1000);
-
-                            ProgramIntro.Run();        // runs the about me and this program information
+                            SysConsole.ResetColor();
+                            Thread.Sleep(1000);
+                            ProgramIntro.Run();
                             break;
                         case 2:
                             Helper.writeLine("You chose Option 2", Colors.defaultColor);
-                            // Add your program execution logic here
-                            Colorful.Console.ResetColor();
-                            System.Console.ResetColor();
-                            System.Threading.Thread.Sleep(1000);
-                            System.Console.Clear();
-                             ProgramMainProgram.mainMenu();
-
-                            //ProgramTest.Test();
+                            SysConsole.Clear();
+                            ProgramMainProgram.mainMenu();
                             break;
                         case 3:
                             Helper.writeLine("Exiting program...", Colors.defaultColor);
                             keepRunning = false;
-                            System.Environment.Exit(0);                            //keepRunning = false; // Set keepRunning to false to exit the loop
+                            Environment.Exit(0);
                             break;
                         default:
                             Helper.writeLine("Invalid option. Please choose a valid option.", Colors.brightRed);
                             break;
                     }
 
-                    // Optionally wait for a key press before clearing to return to menu
                     if (keepRunning)
                     {
                         Helper.writeLine("\nPress any key to return to the main menu...", Colors.defaultColor);
-                        System.Console.ReadKey(); // Wait for user input before clearing
-                        System.Console.Clear(); // Clear console to show the main menu again
-                        System.Threading.Thread.Sleep(500);
+                        SysConsole.ReadKey();
+                        SysConsole.Clear();
+                        Thread.Sleep(500);
                         ProgramStart.start();
-
                     }
                 }
                 catch (FormatException)
                 {
-                    //System.Console.Clear();
                     Helper.writeLine("Invalid input. Please enter a number.", Colors.brightRed);
                 }
                 catch (OverflowException)
                 {
-                    //System.Console.Clear();
                     Helper.writeLine("Input is too large. Please enter a smaller number.", Colors.brightRed);
                 }
                 catch (Exception ex)
                 {
-                    //System.Console.Clear();
                     Helper.writeLine("An error occurred: " + ex.Message, Colors.brightRed);
                 }
             }
@@ -139,7 +151,9 @@ public static class ProgramMainProgram
 {
     public static void mainMenu()
     {
-        var defaultColor = Color.FromArgb(242, 159, 15);  //orange color
+
+
+        var defaultColor = Colors.salmonOrange;
         bool keepRunning = true;
         Helper.isTyping = false;
         System.Threading.Thread.Sleep(500);
@@ -228,7 +242,7 @@ public static class ProgramMainProgram
                             Helper.clearSettings();
 
 
-                            Program.Main(new string[] { });
+                            //Program.Main(new string[] { });
 
 
                             break;
@@ -270,7 +284,7 @@ public static class NotesAndExamples
 {
     public static void Options()
     {
-        var defaultColor = Color.FromArgb(242, 159, 15);  //orange color
+        var defaultColor = Colors.salmonOrange;
         bool keepRunning = true;
         Helper.isTyping = false;
         System.Threading.Thread.Sleep(500);
