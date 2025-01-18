@@ -55,6 +55,8 @@ namespace PastasCSharpNotesAndExamples
 
         public static bool isTyping = false;
 
+        public static object Convert { get; internal set; }
+
         public static void writeLine(string text, Color color)
         {
             Colorful.Console.ForegroundColor = color;
@@ -67,9 +69,17 @@ namespace PastasCSharpNotesAndExamples
             Colorful.Console.Write(text);
         }
 
+        public static void WriteLine(string text, Color color)
+        {
+            Colorful.Console.ForegroundColor = color;
+            Colorful.Console.WriteLine(text);
+        }
+
         public static void StopTyping()
         {
             isTyping = false;
         }
+
+ 
     }
 }

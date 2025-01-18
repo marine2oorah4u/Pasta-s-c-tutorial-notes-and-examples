@@ -2,6 +2,7 @@
 
 using Centvrio.Emoji;
 using Newtonsoft.Json.Linq;
+using Spectre.Console;
 using System.Diagnostics.Metrics;
 using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography.X509Certificates;
@@ -555,7 +556,6 @@ namespace PastasCSharpNotesAndExamples
             // Determine if the user's number is odd or even using the remainder operator.
             // Output the result.
             // Remember to use Console.WriteLine to display messages to the user and Console.ReadLine to capture input.
-
             const int age1 = 20;
             const int age2 = 40;
 
@@ -609,8 +609,102 @@ namespace PastasCSharpNotesAndExamples
             Console.ReadLine();
         }
 
+        public static void odd_Even_Checker_Exercise_1()
+        {
+            /*
+             * Create & initialize two ints
+             * Make a variable to work out the remainder
+             * Output remainder to the screen
+             * Change the first int variable to another number
+             *   and recalculate the remainder
+             *   output new remainder to the screen
+             */
+   
 
 
+            int test1 = 100;
+            var test2 = 6;
+
+            Helper.write("test 1 equals: ", Colors.goldenYellow);
+            Helper.write($"{test1}\n", Colors.numberColor);
+            Helper.write("test 2 equals: ", Colors.goldenYellow);
+            Helper.write($"{test2}\n", Colors.numberColor);
+
+
+
+            int results = test1 % test2;
+
+            // results = 4 for now
+            // test 1 = 100
+            // test 2 = 6
+            //Console.WriteLine(results);
+
+            Console.WriteLine($"The remainder of {test1} and {test2} is: {results}\n");
+            if (results == 0)
+            {
+                Console.WriteLine("which results is even.\n");
+            }
+            else
+            {
+                Console.WriteLine("which results is not even.\n");
+            }
+
+
+            Console.WriteLine("\n\n");
+            Console.WriteLine("test");
+            test1 = results + test2;    // 4 + 6 = 10
+            test2 = results + test1;    // 4 + 10 = 14
+            results = test2 % test1;    // 14 % 10
+                                        // sould be 4
+            Console.WriteLine(results);
+            Console.WriteLine("test");
+
+            // test 1 is results, which is results, or 4
+            // and its 4 plus test2, which is 6, so thats 10
+            /*
+             * test 1 is now 10
+             * 
+             * test2 now is results, which is 4,
+             * and its 4 plus test1, whhich is 10
+             * 
+             * test 2 is 14
+             * 
+             * results is test1, finding the remainding amount of 2
+             * which that is 4
+            */
+
+            Console.Write("now lets change up what ");
+            Helper.write($"test1 ", Colors.goldenYellow);
+            Helper.write("and ", Colors.numberColor);
+            Helper.write($"results ", Colors.goldenYellow);
+            Helper.write("equal\n\n", Colors.numberColor);
+
+            Helper.WriteLine("Test1 now equals the remainder of results and test2, ", Colors.goldenYellow);
+            Helper.WriteLine("and find the remainder of both Test1 and Test2 again with the new value.\n\n\n", Colors.goldenYellow);
+            Helper.write("test1 now equals: ", Colors.peach);
+            System.Console.WriteLine("\n");
+            Helper.write($"{test1}\n\n", Colors.numberColor);
+            Helper.write("test2 ", Colors.goldenYellow);
+            Helper.write("now equals: \n\n", Colors.numberColor);
+            Helper.write($"{test2}\n\n", Colors.goldenYellow);
+            System.Console.WriteLine("\n\n");
+
+            Helper.WriteLine($"The remainder of {test1} and {test2} is: {results}\n", Colors.numberColor);
+            if (results == 0)
+            {
+                Helper.WriteLine("which results is even.\n", Colors.peach);
+            }
+            else
+            {
+                Helper.WriteLine("which results is not even.\n", Colors.brightRed);
+            }
+
+
+            Console.ReadLine();
+
+        }
+
+    
 
 
 
