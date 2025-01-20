@@ -433,7 +433,7 @@ namespace PastasCSharpNotesAndExamples
 
 
             int var1 = 30, var2 = 10, var3 = 20, var4 = 40, var5 = 100, var6 = 100;
-       
+
 
 
             string message;
@@ -619,7 +619,7 @@ namespace PastasCSharpNotesAndExamples
              *   and recalculate the remainder
              *   output new remainder to the screen
              */
-   
+
 
 
             int test1 = 100;
@@ -704,11 +704,189 @@ namespace PastasCSharpNotesAndExamples
 
         }
 
-    
+
+
+        public static void console_Input_output()
+        {
+
+            Console.WriteLine("hello, my name is aba");
+
+            Console.WriteLine("enter your name:");
+            string name = Console.ReadLine();
+            Console.WriteLine("what is your age? ");
+            string ageInput = Console.ReadLine();
+            int age = Convert.ToInt32(ageInput);
+
+
+            //   Console.WriteLine(name);
+
+            Console.WriteLine("what is your age? ");
+            //  Console.WriteLine(age);
+            string world = "world!";
+            Console.WriteLine($"hello {name}, Nice to meet you. you are {age} years old");
+            Console.WriteLine($"hello {world}");
+            Console.ReadLine();
+
+        }
+
+        public static void if_statements()
+        {
+
+            //Console.WriteLine("hello, my name is aba");
+
+            //Console.WriteLine("enter your name:");
+            //string name = Console.ReadLine();
+            //Console.WriteLine("what is your age? ");
+            //string ageInput = Console.ReadLine();
+            //int age = Convert.ToInt32(ageInput);
+            ////Console.WriteLine($"hello {name}, Nice to meet you. you are {age} years old");
 
 
 
-    }
+            ////if (age >= 18)
+            ////{
+            ////    Console.WriteLine("you are 18 or over");
+            ////}
+            ////else
+            ////{
+            ////    Console.WriteLine("you are younger than 17");
+            ////}
+
+
+            //if (age < 0 || age > 150)
+            //{
+            //    Console.WriteLine("invalid age");
+            //}
+            //else
+            //{
+
+            //}
+
+
+            //string world = "world!";
+            // Console.WriteLine($"hello {world}");
+            //Console.ReadLine();
+
+        }
+
+        public static void multiplication_example()
+        {
+            /*
+                * Objective: This method prompts the user to input two integers,
+                * then calculates and displays the product of these two numbers.
+                * 
+                * Steps:
+                * 1. Prompt the user to enter the first number and read the input.
+                * 2. Convert the first input from a string to an integer.
+                * 3. Prompt the user to enter the second number and read the input.
+                * 4. Convert the second input from a string to an integer.
+                * 5. Multiply the two integers to find the product.
+                * 6. Display the result in a formatted message.
+            */
+
+
+
+            Console.Write("Enter the first number:\n ");
+            string numberAInput = Console.ReadLine();
+            int numberA = Convert.ToInt32(numberAInput);
+
+            Console.Write("Enter the Second number:\n ");
+            string numberBInput = Console.ReadLine();
+            int numberB = Convert.ToInt32(numberBInput);
+
+            int numberResults = numberA * numberB;
+
+            Console.WriteLine($"{numberA} times {numberB} equals {numberResults}");
+        }
+
+
+        public static void calculator_exercise_1()
+        {
+            /*
+                 * Exercise: Simple Calculator
+                 *
+                 * Objective: Create a simple calculator that can perform basic arithmetic operations 
+                 * (addition, subtraction, multiplication, and division) based on user input.
+                 *
+                 * Requirements:
+                 * 1. Prompt the user to enter two numbers.
+                 * 2. Ask the user to choose an operation: addition (+), subtraction (-), multiplication (*), or division (/).
+                 * 3. Perform the chosen operation using if statements to determine which arithmetic operation to apply.
+                 * 4. Display the result of the operation.
+                 * 5. Handle division by zero by displaying an appropriate message if the user tries to divide by zero.
+                 *
+                 * Steps to Implement:
+                 * 1. Read the first number from the user.
+                 * 2. Read the second number from the user.
+                 * 3. Prompt the user to enter an arithmetic operator.
+                 * 4. Use if statements to check which operation to perform based on the operator entered.
+                 * 5. Calculate and output the result.
+                 * 6. Include error handling for division by zero.
+            */
+            Console.WriteLine("Enter the first number:");
+            string numberAInput = Console.ReadLine();
+            int numberA = Convert.ToInt32(numberAInput);
+
+            Console.WriteLine("Enter the second number:");
+            string numberBInput = Console.ReadLine();
+            int numberB = Convert.ToInt32(numberBInput);
+
+            char operationChar;
+            bool validInput = false;
+            bool inputsEntered = false;
+            // Loop until a valid operation is entered
+            do
+            {
+                if (!inputsEntered  && !validInput)
+             
+                    Console.WriteLine("Choose which operation you wish to do: +, -, *, /");
+                inputsEntered = true;
+                ConsoleKeyInfo operationKey = Console.ReadKey();
+                Console.WriteLine(); // Move to the next line after key press
+                inputsEntered = true;
+                operationChar = operationKey.KeyChar;
+
+                if (operationChar == '+' || operationChar == '-' || operationChar == '*' || operationChar == '/')
+                {
+                    validInput = true;
+                }
+                else 
+                {
+                    Console.WriteLine("Invalid operation. Please enter one of the following: +, -, *, /");
+                }
+            } 
+            while (!validInput);
+
+            // Perform the operation based on the valid key pressed
+            if (operationChar == '+')
+            {
+                Console.WriteLine($"Result: {numberA} + {numberB} = {numberA + numberB}");
+            }
+            else if (operationChar == '-')
+            {
+                Console.WriteLine($"Result: {numberA} - {numberB} = {numberA - numberB}");
+            }
+            else if (operationChar == '*')
+            {
+                Console.WriteLine($"Result: {numberA} * {numberB} = {numberA * numberB}");
+            }
+            else if (operationChar == '/')
+            {
+                if (numberB != 0)
+                {
+                    Console.WriteLine($"Result: {numberA} / {numberB} = {(double)numberA / numberB}");
+                }
+                else
+                {
+                    Console.WriteLine("Error: Division by zero is not allowed.");
+                }
+            }
+            Console.ReadLine();
+        }
+}
+
+
 
 }
 
+    

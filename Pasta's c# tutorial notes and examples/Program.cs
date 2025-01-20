@@ -371,7 +371,7 @@ namespace PastasCSharpNotesAndExamples
 
             //ProgramStart.start();
 
-            PracticeCode.odd_Even_Checker_Exercise_1();
+            PracticeCode.calculator_exercise_1();
 
 
         }
