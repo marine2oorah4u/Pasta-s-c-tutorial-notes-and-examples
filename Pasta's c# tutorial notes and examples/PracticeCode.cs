@@ -7,11 +7,15 @@ using System.Diagnostics.Metrics;
 using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using Terminaux.Reader.Inputs;  // Required for List<T>
 
 namespace PastasCSharpNotesAndExamples
 {
     public class PracticeCode
     {
+        public static bool running = true; // Initialize running here
+
         public static void numeric_C_Sharp()
         {
 
@@ -837,8 +841,8 @@ namespace PastasCSharpNotesAndExamples
             // Loop until a valid operation is entered
             do
             {
-                if (!inputsEntered  && !validInput)
-             
+                if (!inputsEntered && !validInput)
+
                     Console.WriteLine("Choose which operation you wish to do: +, -, *, /");
                 inputsEntered = true;
                 ConsoleKeyInfo operationKey = Console.ReadKey();
@@ -850,11 +854,11 @@ namespace PastasCSharpNotesAndExamples
                 {
                     validInput = true;
                 }
-                else 
+                else
                 {
                     Console.WriteLine("Invalid operation. Please enter one of the following: +, -, *, /");
                 }
-            } 
+            }
             while (!validInput);
 
             // Perform the operation based on the valid key pressed
@@ -883,10 +887,303 @@ namespace PastasCSharpNotesAndExamples
             }
             Console.ReadLine();
         }
+
+
+
+        public static void numberGuessingGameExercise(Random random)
+
+
+        {
+            // Task: Guess the Number Game
+
+            // Step 1: Generate a random number between 1 and 100
+            // - Use the Random class to generate a random number and store it
+
+            // Step 2: Create a loop that continues until the user guesses the correct number
+            // - Use a boolean flag to control the loop
+
+            // Step 3: Inside the loop, prompt the user to enter their guess
+            // - Use Console.WriteLine to ask for a guess
+            // - Read the user's input using Console.ReadLine and convert it to an integer
+
+            // Step 4: Compare the user's guess with the random number using if statements
+            // - If the guess is higher than the random number, inform the user that the guess is too high
+            // - If the guess is lower than the random number, inform the user that the guess is too low
+            // - If the guess is correct, congratulate the user and exit the loop
+
+            // Step 5: End the program once the correct number is guessed
+
+
+
+
+
+            int number = random.Next(1, 101); // Correct range is 1 to 100
+            int score = 0;
+
+            Console.WriteLine("Let's play a guessing game. Choose a number between 1 and 100.");
+
+            bool correct = false;
+
+            // Step 2: Create a loop that continues until the user guesses the correct number
+            while (!correct)
+            {
+                // Step 3: Inside the loop, prompt the user to enter their guess
+                Console.WriteLine("Enter your guess:");
+                string input = Console.ReadLine();
+
+                // Check if the input is empty
+                if (string.IsNullOrEmpty(input))
+                {
+                    Console.WriteLine("You pressed Enter without typing anything.");
+                    continue; // Skip the rest of the loop iteration
+                }
+
+                // Assume the input is invalid until proven otherwise
+                bool isValidInput = false;
+                int guess = 0;
+
+                // Attempt to parse the input
+                try
+                {
+                    guess = int.Parse(input);
+                    isValidInput = true;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid number.");
+                }
+
+                // If the input was valid, proceed with the game logic
+                if (isValidInput)
+                {
+                    score++; // Increment the score for each valid guess
+
+                    // Step 4: Compare the user's guess with the random number using if statements
+                    if (guess < number)
+                    {
+                        Console.WriteLine("Your guess is too low!");
+                    }
+                    else if (guess > number)
+                    {
+                        Console.WriteLine("Your guess is too high!");
+                    }
+                    else
+                    {
+                        // Step 5: End the program once the correct number is guessed
+                        Console.WriteLine($"Congrats, you guessed the number right! It took you {score} tries.");
+                        correct = true; // Exit the loop
+                    }
+                }
+            }
+
+            // Wait for user input before closing the console
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
+        }
+
+        public static List<string> userInputs = new List<string>();
+
+        public static string? ReadLine { get; private set; }
+
+        public static void toDo_List()
+        {
+            while (PracticeCode.running == true)
+            {
+                Console.WriteLine("What would you like to do?\n");
+                Console.WriteLine("1. Check the list");
+                Console.WriteLine("2. Add to the list");
+                Console.WriteLine("3. Exit the Program");
+                string userInput = Console.ReadLine();
+
+                if (userInput.Equals("1", StringComparison.OrdinalIgnoreCase))
+                {
+                    PracticeCode.displayList();
+                }
+                else if (userInput.Equals("2", StringComparison.OrdinalIgnoreCase))
+                {
+                    addToList();
+                }
+                else if (userInput.Equals("3", StringComparison.OrdinalIgnoreCase))
+                {
+                    PracticeCode.running = false;
+                    Environment.Exit(0);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid choice. Please choose one of the options from up above");
+                }
+            }
+        }
+
+        public static void displayList()
+        {
+            Console.Clear();
+            Console.WriteLine("\n\n\t\t\t");
+            for (int i = 0; i < userInputs.Count; i += 3)
+            {
+                Console.Write($"Task Name: ({userInputs[i]}) ");
+                Console.Write($"Completion Date: ({userInputs[i + 1]}) ");
+                Console.Write("Priotity: ");
+                string priority = userInputs[i + 2];
+                if (priority.Equals("High", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.ForegroundColor = Color.Red;
+                }
+                else if (priority.Equals("Medium", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.ForegroundColor = Color.Yellow;
+                }
+                else if (priority.Equals("Low", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.ForegroundColor = Color.Green;
+                }
+
+                Console.Write(priority);
+                Console.ResetColor(); 
+                Console.WriteLine(); 
+            }
+
+            Console.WriteLine("\nPress any key to return to the main menu");
+            Console.ReadKey();
+            Console.Clear();
+        }
+
+        public static void addToList()
+        {
+            string input1, input2, input3;
+            Console.Clear();
+            Console.WriteLine("Enter three items to add to the list. Type 'exit' in the first field to finish.");
+
+            while (true)
+            {
+                Console.WriteLine("What is the task name? ");
+                input1 = Console.ReadLine();
+                Console.Clear();
+
+                if (string.IsNullOrEmpty(input1))
+                {
+                    Console.WriteLine("You pressed Enter without typing anything. Please try again.");
+                    continue; 
+                }
+
+                if (input1.Equals("exit", StringComparison.OrdinalIgnoreCase))
+                {
+                    break;
+                }
+
+                Console.WriteLine("When do you wish to complete this by? ");
+                while (true)
+                {
+                    input2 = Console.ReadLine();
+                    Console.Clear();
+
+                    if (!string.IsNullOrEmpty(input2))
+                    {
+                        break; 
+                    }
+
+                    Console.WriteLine("You pressed Enter without typing anything. Please try again.");
+                }
+
+                Console.WriteLine("What is its priority? High, Medium, or Low ");
+                while (true)
+                {
+                    input3 = Console.ReadLine();
+                    //Console.Clear();
+
+                    if (string.IsNullOrEmpty(input3))
+                    {
+                        Console.WriteLine("You pressed Enter without typing anything. Please try again.");
+                        continue; 
+                    }
+
+                    if (input3.Equals("High", StringComparison.OrdinalIgnoreCase) ||
+                        input3.Equals("Medium", StringComparison.OrdinalIgnoreCase) ||
+                        input3.Equals("Low", StringComparison.OrdinalIgnoreCase))
+                    {
+                        break; 
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error: Invalid priority. Please choose High, Medium, or Low.");
+                    }
+
+
+                }
+
+                //input3 = Console.ReadLine();
+                Console.Clear();
+
+
+                Console.Write($"Items '{input1}', '{input2}', and ");
+
+                if (input3.Equals("high", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                }
+                else if (input3.Equals("Medium", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                }
+                else if (input3.Equals("Low", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                }
+
+                Console.Write(input3);
+                Console.ResetColor(); 
+                Console.WriteLine(" have been added to the list.\n\n");
+
+                userInputs.Add(input1);
+                userInputs.Add(input2);
+                userInputs.Add(input3);
+
+                Task.Delay(500);
+                Console.WriteLine("Do you want to add another item to the list? (yes/no):");
+                string continueInput = Console.ReadLine();
+
+                while (true)
+                {
+                    if (string.IsNullOrEmpty(continueInput))
+                    {
+                        Console.WriteLine("You pressed Enter without typing anything. Please try again.");
+                        continueInput = Console.ReadLine();
+                    }
+                    else if (continueInput.Equals("yes", StringComparison.OrdinalIgnoreCase))
+                    {
+                        PracticeCode.running = true;
+                        Console.Clear();
+                        Task.Delay(500);
+                        PracticeCode.addToList();
+                        break;
+                    }
+                    else if (continueInput.Equals("no", StringComparison.OrdinalIgnoreCase))
+                    {
+                        Console.Clear();
+                        Task.Delay(500);
+                        PracticeCode.toDo_List();
+
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error: Invalid input. Please choose yes or no.");
+                        continueInput = Console.ReadLine();
+                    }
+                }
+            }
+
+        }
+
+
+
+
+
+
+
+    }
 }
 
-
-
-}
 
     

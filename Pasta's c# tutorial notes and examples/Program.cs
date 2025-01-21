@@ -370,8 +370,9 @@ namespace PastasCSharpNotesAndExamples
 
 
             //ProgramStart.start();
+            Random random = new Random();
 
-            PracticeCode.calculator_exercise_1();
+            PracticeCode.toDo_List();
 
 
         }
