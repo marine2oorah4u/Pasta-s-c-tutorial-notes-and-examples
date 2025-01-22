@@ -1,14 +1,7 @@
 ﻿//using Colorful;
 
-using Centvrio.Emoji;
-using Newtonsoft.Json.Linq;
 using Spectre.Console;
-using System.Diagnostics.Metrics;
-using System.Runtime.Intrinsics.X86;
-using System.Security.Cryptography.X509Certificates;
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
-using Terminaux.Reader.Inputs;  // Required for List<T>
+using System.Media;
 
 namespace PastasCSharpNotesAndExamples
 {
@@ -1040,8 +1033,8 @@ namespace PastasCSharpNotesAndExamples
                 }
 
                 Console.Write(priority);
-                Console.ResetColor(); 
-                Console.WriteLine(); 
+                Console.ResetColor();
+                Console.WriteLine();
             }
 
             Console.WriteLine("\nPress any key to return to the main menu");
@@ -1064,7 +1057,7 @@ namespace PastasCSharpNotesAndExamples
                 if (string.IsNullOrEmpty(input1))
                 {
                     Console.WriteLine("You pressed Enter without typing anything. Please try again.");
-                    continue; 
+                    continue;
                 }
 
                 if (input1.Equals("exit", StringComparison.OrdinalIgnoreCase))
@@ -1080,7 +1073,7 @@ namespace PastasCSharpNotesAndExamples
 
                     if (!string.IsNullOrEmpty(input2))
                     {
-                        break; 
+                        break;
                     }
 
                     Console.WriteLine("You pressed Enter without typing anything. Please try again.");
@@ -1095,14 +1088,14 @@ namespace PastasCSharpNotesAndExamples
                     if (string.IsNullOrEmpty(input3))
                     {
                         Console.WriteLine("You pressed Enter without typing anything. Please try again.");
-                        continue; 
+                        continue;
                     }
 
                     if (input3.Equals("High", StringComparison.OrdinalIgnoreCase) ||
                         input3.Equals("Medium", StringComparison.OrdinalIgnoreCase) ||
                         input3.Equals("Low", StringComparison.OrdinalIgnoreCase))
                     {
-                        break; 
+                        break;
                     }
                     else
                     {
@@ -1132,7 +1125,7 @@ namespace PastasCSharpNotesAndExamples
                 }
 
                 Console.Write(input3);
-                Console.ResetColor(); 
+                Console.ResetColor();
                 Console.WriteLine(" have been added to the list.\n\n");
 
                 userInputs.Add(input1);
@@ -1177,13 +1170,719 @@ namespace PastasCSharpNotesAndExamples
         }
 
 
+        public static void switch_statements()
+        {
+            Console.WriteLine("enter a day of the week: ");
+            int day = Convert.ToInt32(Console.ReadLine());
+
+            //if (day == 1)
+            //{
+            //    Console.WriteLine("Monday");
+            //}
+            //else if (day == 2)
+            //{
+            //    Console.WriteLine("tuesday");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("invald, please enter a value between 1-7");
+            //}
+
+
+            switch (day)
+            {
+                case 1:
+                    Console.WriteLine("mon");
+                    break;
+                // can do say
+                /// case:2
+                /// case 3: {bla}
+                /// and both 2 and 3 will equal the same
+                /// vs doing both case 2 and case 3 the same thing
+                case 2:
+
+                    Console.WriteLine("tue");
+                    break;
+                case 3:
+                    Console.WriteLine("wed");
+                    break;
+                case 4:
+                    Console.WriteLine("thurs");
+                    break;
+                case 5:
+                    Console.WriteLine("fri");
+                    break;
+                case 6:
+                    Console.WriteLine("sat");
+                    break;
+                case 7:
+                    Console.WriteLine("sun");
+                    break;
+                default:
+                    Console.WriteLine("invald, please enter a value between 1-7");
+                    break;
+            }
+
+            Console.ReadLine();
+
+        }
+
+        public static void switches_Exercise_01()
+        {
+
+
+            // Task: Write a switch statement that takes an integer input representing a month
+            //       (1 = January, 2 = February, ..., 12 = December) and outputs the corresponding month name.
+            // Obj: Practice using switches with integer inputs and string outputs.
+
+            Console.WriteLine("What month of the year is it?");
+            Console.WriteLine("Please type the month name (e.g. January, February, etc.)");
+
+            string month = Console.ReadLine();
+
+            switch (month)
+            {
+                case "january": Console.WriteLine("It is currently January"); break;
+                case "february": Console.WriteLine("It is currently February"); break;
+                case "march": Console.WriteLine("It is currently March"); break;
+                case "april": Console.WriteLine("It is currently April"); break;
+                case "may": Console.WriteLine("It is currently May"); break;
+                case "june": Console.WriteLine("It is currently June"); break;
+                case "july": Console.WriteLine("It is currently July"); break;
+                case "august": Console.WriteLine("It is currently August"); break;
+                case "september": Console.WriteLine("It is currently September"); break;
+                case "october": Console.WriteLine("It is currently October"); break;
+                case "november": Console.WriteLine("It is currently November"); break;
+                case "december": Console.WriteLine("It is currently December"); break;
+                default: Console.WriteLine("Please enter a valid month name"); break;
+            }
+
+            Console.ReadLine();
+        }
+
+
+        public static void switches_Exercise_02()
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("Enter a color to change the text to. Your options are either:");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("Yellow,");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("Green,");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("Blue,");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("Cyan, ");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write("Magenta, ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("or ");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine("Gray.");
+
+            string textColor = Console.ReadLine().ToLower();
+
+            switch (textColor)
+            {
+                case "yellow":
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("the text is now Yellow");
+                    break;
+                case "green":
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("the text is now Green");
+                    break;
+                case "blue":
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("the text is now Blue");
+                    break;
+                case "cyan":
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("the text is now Cyan");
+                    break;
+                case "magenta":
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("the text is now Magenta");
+                    break;
+                case "white":
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("the text is now White");
+                    break;
+                case "gray":
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.WriteLine("the text is now Gray");
+                    break;
+            }
+
+            Console.ReadLine();
+        }
+
+        public static void switches_Exercise_03()
+        {
+            CanvasImage CreatePlanetImage(string filename)
+            {
+                var image = new CanvasImage(filename);
+                image.MaxWidth = 30;
+                return image;
+            }
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "space.wav");
+            var soundPlayer = new SoundPlayer(filePath);
+            soundPlayer.Play();
+
+            CanvasImage sun = CreatePlanetImage("sun.png");
+            CanvasImage mercury = CreatePlanetImage("mercury.png");
+            CanvasImage venus = CreatePlanetImage("venus.png");
+            CanvasImage earth = CreatePlanetImage("earth.png");
+            CanvasImage moon = CreatePlanetImage("moon.png");
+            CanvasImage mars = CreatePlanetImage("mars.png");
+            CanvasImage jupiter = CreatePlanetImage("jupiter.png");
+            CanvasImage saturn = CreatePlanetImage("saturn.png");
+            CanvasImage uranus = CreatePlanetImage("uranus.png");
+            CanvasImage neptune = CreatePlanetImage("neptune.png");
+            CanvasImage pluto = CreatePlanetImage("pluto.png");
+            // Render the image to the console
+            //AnsiConsole.Write(sun);
+            //AnsiConsole.Write(mercury);
+            //AnsiConsole.Write(venus);
+            //AnsiConsole.Write(earth);
+            //AnsiConsole.Write(moon);
+            //AnsiConsole.Write(mars);
+            //AnsiConsole.Write(jupiter);
+            //AnsiConsole.Write(saturn);
+            //AnsiConsole.Write(uranus);
+            //AnsiConsole.Write(neptune);
+            //AnsiConsole.Write(pluto);
+            //AnsiConsole.MarkupLine("[bold blue on yellow blink underline]Warning![/] This is very [italic green on black strikethrough]important[/].");
+
+            Color[] textColor = { Color.Red, Color.Yellow, Color.Green, Color.Maroon, Color.Olive, Color.Blue };
+            Random random = new Random();
+            while (true)
+            {
+                Console.WriteLine("What Planet do you wish to look up today?\n");
+                Console.ForegroundColor = textColor[random.Next(textColor.Length)];
+                string[] planets2 = { "the sun", "mercury", "venus", "the earth", "the moon", "mars", "jupiter", "saturn", "uranus", "neptune" };
+                Console.ResetColor(); // Reset the color back to default
+
+                Console.WriteLine("choose between:");
+
+                foreach (string planets in planets2)
+                {
+                    Console.ForegroundColor = textColor[random.Next(textColor.Length)];
+                    Console.WriteLine($"■ {planets}");
+                    Console.ResetColor(); // Reset the color back to default
+                }
+
+
+                string planet = Console.ReadLine().ToLower();
+
+                switch (planet)
+                {
+                    case "sun":
+                    case "the sun":
+                        {
+                            Console.Clear();
+
+                            Console.WriteLine("you chose: ");
+                            Console.WriteLine("\n\n");
+                            Thread.Sleep(1000);
+                            AnsiConsole.Write(sun);
+                            AnsiConsole.MarkupLine("[bold blue on yellow blink underline][italic green on black strikethrough]The Sun![/][/].\n\n");
+
+
+
+                            string[] sunFacts = {
+    "The Sun is the center of our solar system and the primary source of light and heat for our planets.",
+    "The Sun's surface temperature is about 5,500 degrees Celsius (10,000 degrees Fahrenheit).",
+    "The Sun is a massive ball of hot, glowing gas and makes up about 99.8% of the mass of our solar system.",
+    "The Sun is about 109 times bigger than the Earth.",
+    "The Sun's core is incredibly hot, with temperatures reaching over 15,000,000 degrees Celsius (27,000,000 degrees Fahrenheit).",
+    "The Sun's energy is produced by nuclear reactions that occur in its core.",
+    "The Sun's light takes about 8 minutes and 20 seconds to reach the Earth.",
+    "The Sun's surface is covered in convective cells that help to distribute heat around the star.",
+    "The Sun's magnetic field is incredibly strong and plays a crucial role in shaping the solar system.",
+    "The Sun is about 4.6 billion years old and has already burned through about half of its fuel.",
+    "The Sun will eventually exhaust its fuel and expand into a red giant, engulfing the inner planets.",
+    "The Sun's corona is much hotter than its surface, with temperatures reaching over 1,000,000 degrees Celsius (1,800,000 degrees Fahrenheit).",
+    "The Sun's solar flares can release enormous amounts of energy and affect the Earth's magnetic field.",
+    "The Sun's sunspots are cooler regions on the surface that can affect the Earth's climate.",
+    "The Sun's rotation is not uniform and can vary depending on the latitude."
+};
+
+
+                            foreach (string sunFact in sunFacts)
+                            {
+
+                                Console.ForegroundColor = textColor[random.Next(textColor.Length)];
+                                Console.WriteLine($"■ {sunFact}");
+                                Console.ResetColor(); // Reset the color back to default
+                                Thread.Sleep(1000);
+                            }
+
+                        }
+                        Console.WriteLine("Press any key to return to the main menu...");
+                        Console.ReadKey();
+                        Console.Clear();
+
+                        break; // E
 
 
 
 
+                    case "mercury":
+                        {
+                            Console.Clear();
 
+                            Console.WriteLine("you chose: ");
+                            Console.WriteLine("\n\n");
+                            Thread.Sleep(1000);
+                            AnsiConsole.Write(mercury);
+                            AnsiConsole.MarkupLine("[bold blue on yellow blink underline][italic green on black strikethrough]The planet Mercury![/][/].");
+
+                            string[] mercuryFacts = {
+    "Mercury is the smallest planet in our solar system, with a diameter of only about 4,879 kilometers.",
+    "Mercury is the closest planet to the Sun, with an average distance of about 58 million kilometers.",
+    "Mercury has no atmosphere, which means there's no air, no wind, and no weather on the planet.",
+    "Mercury's surface temperature can range from -173 degrees Celsius (-279 degrees Fahrenheit) at night to 427 degrees Celsius (801 degrees Fahrenheit) during the day.",
+    "Mercury's orbit is highly eccentric, which means its distance from the Sun varies throughout the year.",
+    "Mercury's rotation is tidally locked, which means it always shows the same face to the Sun.",
+    "Mercury's surface is heavily cratered, indicating a geologically inactive surface.",
+    "Mercury's magnetic field is very weak, which means it offers little protection from the Sun's radiation.",
+    "Mercury's interior is composed of a large iron core surrounded by a mantle of rock.",
+    "Mercury's surface is composed of a variety of rock types, including basalts and anorthosites.",
+    "Mercury's geology is characterized by numerous fault lines and ridges.",
+    "Mercury's surface has many similarities to the Moon's surface.",
+    "Mercury's orbit is slowly increasing in size due to the tidal interactions with the Sun.",
+    "Mercury's rotation is slowing down over time due to the tidal interactions with the Sun."
+};
+
+                            foreach (string mercuryFact in mercuryFacts)
+                            {
+
+                                Console.ForegroundColor = textColor[random.Next(textColor.Length)];
+                                Console.WriteLine($"■ {mercuryFact}");
+                                Console.ResetColor(); // Reset the color back to default
+                                Thread.Sleep(1000);
+
+                            }
+                            Console.WriteLine("Press any key to return to the main menu...");
+                            Console.ReadKey();
+                            Console.Clear();
+
+                            break; // E
+                        }
+
+                    case "venus":
+                        {
+                            Console.Clear();
+
+                            Console.WriteLine("you chose: ");
+                            Console.WriteLine("\n\n");
+                            Thread.Sleep(500);
+                            AnsiConsole.Write(venus);
+                            AnsiConsole.MarkupLine("[bold blue on yellow blink underline][italic green on black strikethrough]The planet venus![/][/].");
+
+                            string[] venusFacts = {
+    "Venus is often called Earth's 'sister planet' because of their similar size and mass.",
+    "Venus has a thick atmosphere that traps heat, making it the hottest planet in the solar system with surface temperatures reaching up to 462 degrees Celsius (863 degrees Fahrenheit).",
+    "Venus rotates very slowly, with its day lasting 243 Earth days, but it also rotates in the opposite direction of its orbit around the Sun.",
+    "Venus has no moons, making it one of the few planets in the solar system without a natural satellite.",
+    "Venus's atmosphere is composed mostly of carbon dioxide, with clouds of sulfuric acid and droplets of sulfuric acid.",
+    "Venus's surface is hidden by thick clouds of sulfuric acid and droplets of sulfuric acid.",
+    "Venus's surface temperature is hot enough to melt lead.",
+    "Venus's atmosphere is crushing, with pressures reaching up to 92 times that of the Earth's atmosphere.",
+    "Venus's surface is relatively young, with few craters and a geologically active surface.",
+    "Venus's interior is composed of a solid iron core surrounded by a mantle of rock.",
+    "Venus's surface is composed of numerous volcanoes and lava flows.",
+    "Venus's geology is characterized by numerous fault lines and ridges.",
+    "Venus's surface has many similarities to the Earth's surface, with features such as mountains and valleys."
+};
+                            foreach (string venusFact in venusFacts)
+                            {
+
+                                Console.ForegroundColor = textColor[random.Next(textColor.Length)];
+                                Console.WriteLine($"■ {venusFact}");
+                                Console.ResetColor(); // Reset the color back to default
+                                Thread.Sleep(1000);
+
+                            }
+
+
+                            Console.WriteLine("Press any key to return to the main menu...");
+                            Console.ReadKey();
+                            Console.Clear();
+
+                            break; // E
+                        }
+                    case "the earth":
+                    case "earth":
+                        {
+                            Console.Clear();
+
+                            Console.WriteLine("you chose: ");
+                            Console.WriteLine("\n\n");
+                            Thread.Sleep(500);
+                            AnsiConsole.Write(earth);
+                            AnsiConsole.MarkupLine("[bold blue on yellow blink underline][italic green on black strikethrough]The planet earth![/][/].");
+
+                            string[] earthFacts = {
+    "Earth is the only known planet in the universe with liquid water, which is essential for life.",
+    "Earth's atmosphere is made up of 78% nitrogen, 21% oxygen, and 1% other gases, which is perfect for supporting life.",
+    "Earth's rotation is slowing down over time, which is why we have to add an extra second to our clocks every few years to keep them in sync with the planet's rotation.",
+    "Earth has a unique tilt in its axis, which is why we have seasons and why the planet's climate varies so much from one region to another.",
+    "Earth's magnetic field is incredibly strong and plays a crucial role in protecting the planet from the Sun's radiation.",
+    "Earth's interior is composed of a solid iron core surrounded by a mantle of rock.",
+    "Earth's surface is composed of 71% water, with the remaining 29% consisting of continents and islands.",
+    "Earth's atmosphere is home to a diverse range of weather patterns, including hurricanes, tornadoes, and blizzards.",
+    "Earth's geology is characterized by numerous fault lines and ridges, with features such as mountains and valleys.",
+    "Earth's surface is home to a diverse range of ecosystems, including forests, deserts, and oceans.",
+    "Earth's climate is constantly changing, with factors such as volcanic eruptions and human activities contributing to global warming.",
+    "Earth's rotation is not uniform and can vary depending on the latitude.",
+    "Earth's orbit is not a perfect circle and can vary slightly over time."
+};
+
+                            foreach (string earthFact in earthFacts)
+                            {
+
+                                Console.ForegroundColor = textColor[random.Next(textColor.Length)];
+                                Console.WriteLine($"■ {earthFact}");
+                                Console.ResetColor(); // Reset the color back to default
+                                Thread.Sleep(1000);
+
+
+                            }
+
+
+                            Console.WriteLine("Press any key to return to the main menu...");
+                            Console.ReadKey();
+                            Console.Clear();
+
+                            break; // E
+                        }
+                    case "moon":
+                    case "the moon":
+                        {
+                            Console.Clear();
+
+                            Console.WriteLine("you chose: ");
+                            Console.WriteLine("\n\n");
+                            Thread.Sleep(1000);
+                            AnsiConsole.Write(moon);
+                            AnsiConsole.MarkupLine("[bold blue on yellow blink underline][italic green on black strikethrough]The moon![/][/].\n\n");
+
+                            string[] moonFacts = {
+    "The Moon is Earth's only natural satellite and is the fifth-largest moon in the solar system.",
+    "The Moon is thought to have formed about 4.5 billion years ago when a massive object collided with Earth, causing debris to be thrown into orbit and eventually coalesce into the Moon.",
+    "The Moon's surface is covered with craters, which were formed by asteroid and comet impacts over billions of years.",
+    "The Moon has no atmosphere, which means there's no air, no wind, and no weather on the Moon.",
+    "The Moon's surface temperature can range from -173 degrees Celsius (-279 degrees Fahrenheit) at night to 127 degrees Celsius (261 degrees Fahrenheit) during the day.",
+    "The Moon's orbit is slowly increasing in size due to the tidal interactions with the Earth.",
+    "The Moon's rotation is tidally locked, which means it always shows the same face to the Earth.",
+    "The Moon's surface is composed of a variety of rock types, including basalts and anorthosites.",
+    "The Moon's geology is characterized by numerous fault lines and ridges.",
+    "The Moon's surface has many similarities to the Earth's surface, with features such as mountains and valleys.",
+    "The Moon's interior is composed of a solid iron core surrounded by a mantle of rock.",
+    "The Moon's surface is home to a diverse range of geological features, including craters, mountains, and lava flows."
+};
+
+                            foreach (string moonFact in moonFacts)
+                            {
+
+                                Console.ForegroundColor = textColor[random.Next(textColor.Length)];
+                                Console.WriteLine($"■ {moonFact}");
+                                Console.ResetColor(); // Reset the color back to default
+                                Thread.Sleep(1000);
+
+
+                            }
+
+                            Console.WriteLine("Press any key to return to the main menu...");
+                            Console.ReadKey();
+                            Console.Clear();
+
+                            break; // E
+                        }
+                    case "mars":
+                        {
+                            Console.Clear();
+
+                            Console.WriteLine("you chose: ");
+                            Console.WriteLine("\n\n");
+                            Thread.Sleep(500);
+                            AnsiConsole.Write(mars);
+                            AnsiConsole.MarkupLine("[bold blue on yellow blink underline][italic green on black strikethrough]The planet mars![/][/].");
+
+
+                            string[] marsFacts = {
+    "Mars is often called the 'Red Planet' because of its reddish appearance, which is caused by iron oxide in the planet's soil.",
+    "Mars has the tallest volcano in our solar system, Olympus Mons, which stands at a height of over 27 kilometers (17 miles).",
+    "Mars has polar ice caps, which suggest that the planet may have had liquid water on its surface in the past.",
+    "Mars has the longest valley in our solar system, Valles Marineris, which stretches over 4,000 kilometers (2,500 miles) in length.",
+    "Mars's atmosphere is very thin, with pressures reaching only about 1% of the Earth's atmosphere.",
+    "Mars's surface temperature can range from -125 degrees Celsius (-193 degrees Fahrenheit) at night to 20 degrees Celsius (68 degrees Fahrenheit) during the day.",
+    "Mars's geology is characterized by numerous fault lines and ridges, with features such as mountains and valleys.",
+    "Mars's surface is home to a diverse range of geological features, including craters, volcanoes, and canyons.",
+    "Mars's interior is composed of a solid iron core surrounded by a mantle of rock.",
+    "Mars's surface is thought to have been shaped by water in the past, with features such as riverbeds and lakebeds.",
+    "Mars's atmosphere is mostly carbon dioxide, with some nitrogen and argon.",
+    "Mars's rotation is very similar to the Earth's, with a day lasting 24.6 hours."
+};
+
+                            foreach (string marsFact in marsFacts)
+                            {
+
+                                Console.ForegroundColor = textColor[random.Next(textColor.Length)];
+                                Console.WriteLine($"■ {marsFact}");
+                                Console.ResetColor(); // Reset the color back to default
+                                Thread.Sleep(1000);
+
+
+                            }
+
+                            Console.WriteLine("Press any key to return to the main menu...");
+                            Console.ReadKey();
+                            Console.Clear();
+
+                            break; // E
+                        }
+                    case "jupiter":
+                        {
+                            Console.Clear();
+
+                            Console.WriteLine("you chose: ");
+                            Console.WriteLine("\n\n");
+                            Thread.Sleep(500);
+                            AnsiConsole.Write(jupiter);
+                            AnsiConsole.MarkupLine("[bold blue on yellow blink underline][italic green on black strikethrough]The planet jupiter![/][/].");
+
+                            string[] jupiterFacts = {
+    "Jupiter is the largest planet in our solar system, with a diameter of over 142,984 kilometers (88,846 miles).",
+    "Jupiter is a gas giant, meaning that it's primarily composed of hydrogen and helium gases.",
+    "Jupiter's Great Red Spot is a giant storm that has been raging forover 350 years and is larger than Earth.",
+    "Jupiter has at least 79 known moons, with the four largest being Ganymede, Callisto, Io, and Europa, known as the Galilean moons.",
+    "Jupiter's atmosphere is characterized by bands of clouds, which are caused by high-speed winds and the planet's rapid rotation.",
+    "Jupiter has a very strong magnetic field, which is about 20,000 times stronger than Earth's magnetic field.",
+    "Jupiter's interior is believed to consist of a solid core surrounded by a layer of metallic hydrogen and an outer layer of gaseous hydrogen and helium.",
+    "Jupiter has a rotation period of about 10 hours, making it the fastest rotating planet in the solar system.",
+    "Jupiter emits more heat than it receives from the Sun due to the slow gravitational compression of its massive interior.",
+    "Jupiter's ring system is faint and composed mostly of dust particles, making it difficult to observe.",
+    "Jupiter has a very high number of storms, with some regions of its atmosphere experiencing wind speeds of up to 600 kilometers per hour (370 miles per hour).",
+    "Jupiter's atmosphere contains various compounds, including ammonia, methane, and water vapor.",
+    "Jupiter's large size and mass allow it to exert a strong gravitational pull, which helps protect the inner planets from potential asteroid impacts.",
+    "Jupiter's cloud tops are extremely cold, with temperatures reaching -145 degrees Celsius (-234 degrees Fahrenheit)."
+};
+
+                            foreach (string jupiterFact in jupiterFacts)
+                            {
+
+                                Console.ForegroundColor = textColor[random.Next(textColor.Length)];
+                                Console.WriteLine($"■ {jupiterFact}");
+                                Console.ResetColor(); // Reset the color back to default
+                                Thread.Sleep(1000);
+
+
+                            }
+                            Console.WriteLine("Press any key to return to the main menu...");
+                            Console.ReadKey();
+                            Console.Clear();
+
+                            break; // E
+                        }
+                    case "saturn":
+                        {
+                            Console.Clear();
+
+                            Console.WriteLine("you chose: ");
+                            Console.WriteLine("\n\n");
+                            Thread.Sleep(500);
+                            AnsiConsole.Write(saturn);
+                            AnsiConsole.MarkupLine("[bold blue on yellow blink underline][italic green on black strikethrough]The planet saturn![/][/].");
+
+                            string[] saturnFacts = {
+    "Saturn is the second-largest planet in our solar system, with a diameter of about 120,536 kilometers (74,898 miles).",
+    "Saturn is best known for its stunning ring system, which is composed of ice and rock particles ranging in size from tiny grains to large boulders.",
+    "Saturn is a gas giant, primarily composed of hydrogen and helium, with a small rocky core.",
+    "Saturn has at least 83 known moons, with Titan being the largest and the second-largest moon in the solar system.",
+    "Saturn's rings are made up of several distinct rings and gaps, with the main rings being A, B, and C rings.",
+    "Saturn's atmosphere has a banded structure similar to Jupiter's, with storms and high-speed winds.",
+    "Saturn rotates very quickly, with a rotation period of about 10.7 hours.",
+    "Saturn has a very low density, even lower than water, which means it could theoretically float in a large enough body of water.",
+    "Saturn's magnetic field is about 580 times stronger than Earth's magnetic field.",
+    "Saturn's winds can reach speeds of up to 1,800 kilometers per hour (1,100 miles per hour) in the upper atmosphere.",
+    "Saturn's interior is believed to have a core made of rock and metal, surrounded by a layer of liquid metallic hydrogen.",
+    "Saturn's rings are constantly changing due to gravitational interactions with its moons.",
+    "Saturn's moon Titan has a dense atmosphere and is the only moon in the solar system known to have stable bodies of liquid on its surface."
+};
+                            foreach (string saturnFact in saturnFacts)
+                            {
+
+                                Console.ForegroundColor = textColor[random.Next(textColor.Length)];
+                                Console.WriteLine($"■ {saturnFact}");
+                                Console.ResetColor(); // Reset the color back to default
+                                Thread.Sleep(1000);
+
+
+                            }
+
+                            Console.WriteLine("Press any key to return to the main menu...");
+                            Console.ReadKey();
+                            Console.Clear();
+
+                            break; // E
+                        }
+                    case "uranus":
+                        {
+                            Console.Clear();
+
+                            Console.WriteLine("you chose: ");
+                            Console.WriteLine("\n\n");
+                            Thread.Sleep(500);
+                            AnsiConsole.Write(uranus);
+                            AnsiConsole.MarkupLine("[bold blue on yellow blink underline][italic green on black strikethrough]The planet uranus![/][/].");
+
+                            string[] uranusFacts = {
+    "Uranus is the seventh planet from the Sun and is classified as an ice giant due to its unique composition.",
+    "Uranus has a diameter of about 50,724 kilometers (31,518 miles), making it the third-largest planet in the solar system.",
+    "Uranus has a tilted axis of rotation, at about 98 degrees, which causes it to rotate on its side compared to other planets.",
+    "Uranus has a faint ring system composed of 13 known rings made up of ice and rock particles.",
+    "Uranus has 27 known moons, with the five largest being Miranda, Ariel, Umbriel, Titania, and Oberon.",
+    "Uranus's atmosphere is primarily composed of hydrogen and helium, with a higher proportion of water, ammonia, and methane compared to Jupiter and Saturn.",
+    "Uranus is the coldest planet in the solar system, with minimum temperatures dropping to -224 degrees Celsius (-371 degrees Fahrenheit).",
+    "Uranus has a rotation period of about 17.2 hours.",
+    "Uranus's magnetic field is tilted at an angle of 59 degrees from its rotational axis and is offset from the planet's center.",
+    "Uranus has a relatively low density, which suggests that it is composed of a large amount of ices and gases.",
+    "Uranus's atmosphere exhibits bands of clouds and storms, although they are less prominent than those on Jupiter and Saturn.",
+    "Uranus is often referred to as the 'sideways planet' due to its extreme axial tilt.",
+    "Uranus's moons show a variety of geological features, including canyons, craters, and ice formations."
+};
+                            foreach (string uranusFact in uranusFacts)
+                            {
+
+                                Console.ForegroundColor = textColor[random.Next(textColor.Length)];
+                                Console.WriteLine($"■ {uranusFact}");
+                                Console.ResetColor(); // Reset the color back to default
+                                Thread.Sleep(1000);
+
+
+                            }
+
+
+
+                            Console.WriteLine("Press any key to return to the main menu...");
+                            Console.ReadKey();
+                            Console.Clear();
+
+                            break; // E
+                        }
+                    case "neptune":
+                        {
+                            Console.Clear();
+
+                            Console.WriteLine("you chose: ");
+                            Console.WriteLine("\n\n");
+                            Thread.Sleep(500);
+                            AnsiConsole.Write(neptune);
+                            AnsiConsole.MarkupLine("[bold blue on yellow blink underline][italic green on black strikethrough]The planet neptune![/][/].");
+
+                            string[] neptuneFacts = {
+    "Neptune is the eighth and farthest planet from the Sun in our solar system.",
+    "Neptune has a diameter of about 49,244 kilometers (30,598 miles), making it slightly smaller than Uranus.",
+    "Neptune has a deep blue color due to the presence of methane in its atmosphere, which absorbs red light.",
+    "Neptune experiences some of the fastest winds in the solar system, with speeds reaching up to 2,100 kilometers per hour (1,300 miles per hour).",
+    "Neptune has a faint ring system composed of ice and dust particles, along with six known rings.",
+    "Neptune has 14 known moons, with Triton being the largest and the only large moon in the solar system that orbits in the opposite direction of its planet.",
+    "Neptune's atmosphere is primarily composed of hydrogen, helium, and methane, with an active weather system that includes storms and high-speed winds.",
+    "Neptune has a rotation period of about 16 hours and 6 minutes.",
+    "Neptune has a strong magnetic field that is tilted relative to its rotational axis, similar to Uranus.",
+    "Neptune was discovered in 1846 by Johann Galle and Heinrich d'Arrest based on mathematical predictions.",
+    "Neptune's interior is thought to consist of a rocky core surrounded by water, ammonia, and methane ices.",
+    "Neptune's distance from the Sun means that it receives very little sunlight, resulting in extremely cold temperatures.",
+    "Neptune has a dynamic atmosphere with large storms, including the Great Dark Spot, which is similar in nature to Jupiter's Great Red Spot."
+};
+
+                            foreach (string neptuneFact in neptuneFacts)
+                            {
+
+                                Console.ForegroundColor = textColor[random.Next(textColor.Length)];
+                                Console.WriteLine($"■ {neptuneFact}");
+                                Console.ResetColor(); // Reset the color back to default
+                                Thread.Sleep(1000);
+
+
+                            }
+
+                            Console.WriteLine("Press any key to return to the main menu...");
+                            Console.ReadKey();
+                            Console.Clear();
+
+                            break; // E
+                        }
+                    case "pluto":
+                        {
+
+                            Console.Clear();
+
+                            Console.WriteLine("you chose: ");
+                            Console.WriteLine("\n\n");
+                            Thread.Sleep(500);
+                            AnsiConsole.Write(pluto);
+                            AnsiConsole.MarkupLine("[bold blue on yellow blink underline][italic green on black strikethrough]The planet pluto![/][/].");
+
+
+
+                            string[] plutoFacts = {
+    "Pluto is no longer considered a planet, but is now classified as a dwarf planet.",
+    "Pluto is a small, icy world with a highly eccentric orbit that takes it as close as 29.7 astronomical units (AU) from the Sun and as far as 49.3 AU from the Sun.",
+    "Pluto has a highly tilted axis, which means that the planet essentially spins on its side, resulting in extreme seasons on the planet.",
+    "Pluto has a moon called Charon, which is about half the size of Pluto itself.",
+    "Pluto was discovered in 1930 by Clyde Tombaugh and was initially considered to be the ninth planet in our solar system.",
+    "Pluto's surface is composed primarily of nitrogen ice mixed with darker organic material.",
+    "Pluto has a thin atmosphere, which freezes and thaws as it moves closer to and farther from the Sun.",
+    "Pluto has a highly eccentric orbit, which takes it as close as 29.7 AU from the Sun and as far as 49.3 AU from the Sun.",
+    "Pluto is part of a population of similar objects in the Kuiper Belt, a region of icy bodies beyond Neptune.",
+    "Pluto's size is approximately 2,374 kilometers (1,475 miles) in diameter, making it much smaller than the other planets in our solar system.",
+    "Pluto's surface features include mountains, valleys, and craters, which suggest a geologically active past.",
+    "Pluto's moon Charon has a surface composed primarily of water ice mixed with darker organic material.",
+    "Pluto's orbit overlaps with that of Neptune, and the two objects are in a 3:2 orbital resonance, meaning that Pluto orbits the Sun twice for every three orbits of Neptune.",
+    "Pluto's discovery led to a reevaluation of the definition of a planet, ultimately resulting in its reclassification as a dwarf planet in 2006."
+};
+                            foreach (string plutoFact in plutoFacts)
+                            {
+
+                                Console.ForegroundColor = textColor[random.Next(textColor.Length)];
+                                Console.WriteLine($"■ {plutoFact}");
+                                Console.ResetColor(); // Reset the color back to default
+                                Thread.Sleep(1000);
+
+
+                            }
+
+
+
+
+                        }
+                        Console.WriteLine("Press any key to return to the main menu...");
+                        Console.ReadKey();
+                        Console.Clear();
+
+                        break; // E
+
+                    default:
+                        Console.WriteLine("invalid chouce. Choose one of the planets from up above");
+                        break;
+
+
+                }
+
+
+
+
+                //Console.ReadLine();
+            }
+
+
+        }
     }
 }
 
 
-    
+

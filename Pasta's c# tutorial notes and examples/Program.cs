@@ -372,7 +372,7 @@ namespace PastasCSharpNotesAndExamples
             //ProgramStart.start();
             Random random = new Random();
 
-            PracticeCode.toDo_List();
+            PracticeCode.switches_Exercise_03();
 
 
         }

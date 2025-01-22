@@ -39,6 +39,7 @@ namespace PastasCSharpNotesAndExamples
         public static Color violet = Color.FromArgb(238, 84, 144);
         public static Color wheat = Color.FromArgb(245, 222, 179);
         public static Color yellowGreen = Color.FromArgb(154, 205, 50);
+        public static Color spaceBrown = Color.FromArgb(70, 44, 29);
     }
 
 
