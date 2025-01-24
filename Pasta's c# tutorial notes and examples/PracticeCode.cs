@@ -1,12 +1,18 @@
 ﻿//using Colorful;
 
 using Spectre.Console;
+using NAudio.Wave;
+
+using System.Diagnostics;
 using System.Media;
+using System.Security.Cryptography.X509Certificates;
 
 namespace PastasCSharpNotesAndExamples
 {
     public class PracticeCode
     {
+
+
         public static bool running = true; // Initialize running here
 
         public static void numeric_C_Sharp()
@@ -1881,8 +1887,318 @@ namespace PastasCSharpNotesAndExamples
 
 
         }
+        public static void for_loops()
+        {
+            Console.WriteLine("What do you want to repeat?");
+            string message = Console.ReadLine();
+
+            Console.WriteLine("and how many times do you want to repeat it?");
+            int loopCounter = Convert.ToInt32(Console.ReadLine());
+
+            if (loopCounter <= 0)
+            {
+                Console.WriteLine("sorry, please, enter a value above 0");
+            }
+            else
+            {
+                for (int i = 1; i < loopCounter; i++)
+                {
+                    Console.WriteLine(message);
+                }
+            }
+
+            //Console.WriteLine("hi");
+
+
+
+            Console.ReadLine();
+        }
+
+
+
+        public static void for_Loop_exercise_01()
+        {
+            // Task: Print a Countdown
+
+            // Write a program that uses a for loop to print a countdown from 10 to 1.
+
+            Console.WriteLine("lets count down from 10");
+
+            for (int i = 10; i >= 1; i--)
+            {
+                Thread.Sleep(1000);
+                Console.WriteLine(i);
+            }
+            Console.WriteLine("Blast off!"); // You could add this to make it feel more like a real countdown
+            Console.ReadLine();
+
+        }
+
+        public static void for_Loop_exercise_02()
+        {
+            // Write a program that prints the following pattern to the console:
+            // *
+            // **
+            // ***
+            // ****
+            // *****
+            // Use a for loop to iterate over the rows of the pattern
+            // Use another for loop (nested inside the first one) to iterate over the columns of the pattern
+            // Print a * character for each column in the current row
+
+
+            Console.WriteLine("lets mimic a loading bar");
+
+            Console.Write("Now loading ");
+            for (int i = 1; i <= 10; i++)
+            {
+
+                Console.Write("* ");
+                Thread.Sleep(500);
+            }
+            Console.WriteLine("Done!");
+
+        }
+
+        public static void for_loop_exercise_03()
+        {
+            Random random = new Random();
+            Helper.WriteLine("Lets have a horse race", Colors.lightPurple);
+            Console.WriteLine("=======================");
+
+            int horseSpeed = random.Next(0, 10);
+            int horseSpeed2 = random.Next(0, 10);
+            int horseSpeed3 = random.Next(0, 10);
+            int horseSpeed4 = random.Next(0, 10);
+
+            for (int timer = 10; timer <= 50; timer += 10)
+            {
+                Thread.Sleep(500);
+                Console.WriteLine("\n");
+                int horseIncrement = random.Next(1, 10);
+                int horseIncrement2 = random.Next(1, 10);
+                int horseIncrement3 = random.Next(1, 10);
+                int horseIncrement4 = random.Next(1, 10);
+
+                horseSpeed += horseIncrement;
+                horseSpeed2 += horseIncrement2;
+                horseSpeed3 += horseIncrement3;
+                horseSpeed4 += horseIncrement4;
+
+                Helper.writeLine($"Horse 1: {horseSpeed}", Colors.lightRed);
+                Helper.writeLine($"Horse 2: {horseSpeed2}", Colors.lightYellow);
+                Helper.writeLine($"Horse 3: {horseSpeed3}", Colors.forestGreen);
+                Helper.WriteLine($"Horse 4: {horseSpeed4}", Colors.blueJayBlue);
+
+                //Console.Clear();
+
+                if (timer >= 50)
+                {
+                    if (horseSpeed > horseSpeed2 && horseSpeed > horseSpeed3 && horseSpeed > horseSpeed4)
+                    {
+                        Console.WriteLine("horse 1 is the winner");
+                    }
+                    else if (horseSpeed2 > horseSpeed && horseSpeed2 > horseSpeed3 && horseSpeed2 > horseSpeed4)
+                    {
+                        Console.WriteLine("horse 2 is the winner");
+                    }
+                    else if (horseSpeed3 > horseSpeed && horseSpeed3 > horseSpeed2 && horseSpeed3 > horseSpeed4)
+                    {
+                        Console.WriteLine("horse 3 is the winner");
+                    }
+                    else
+                    {
+                        Console.WriteLine("horse 4 is the winner");
+                    }
+                    break;
+                }
+
+            }
+            Console.ReadLine();
+        }
+
+
+        public static void for_loop_exercise_04()
+        {
+
+            // Galaxy Invaders 
+
+            // Create a program that simulates a space battle between a spaceship and a fleet of alien invaders. 
+            // The spaceship has 100 health points and the alien invaders have 50 health points each. 
+            // The spaceship can fire laser blasts that deal 20 damage to the alien invaders. 
+            // The alien invaders can fire plasma blasts that deal 10 damage to the spaceship. 
+            // The battle continues until either the spaceship or all the alien invaders are destroyed.
+
+            // Task: // Write a C# program that simulates the space battle using a for loop. 
+            // The program should ask the user for the number of alien invaders.
+            // The program should then simulate the battle, printing out the health points of the spaceship and the alien invaders after each round.
+            // If the spaceship is destroyed, print out "Game Over".
+            // / If all the alien invaders are destroyed, print out "Victory!".
+
+            Random random = new Random();
+
+            int playerHealth = 100;
+            int enemyhealth = 50;
+            int playerDamage = 20;
+            int enemyDamage = 10;
+            bool running = true;
+
+            int numberOfEnemies = 12;
+            bool enemyHit = false;
+            bool playerHit = false;
+
+            int roundNumber = 0;
+            int score = 0;
+            int moreEnemies = 2;
+
+
+            Console.WriteLine("lets play Galaxy invaders");
+
+            Console.WriteLine("=========================");
+            Thread.Sleep(1000);
+            Console.WriteLine("prss any key to start");
+            Console.ReadKey();
+
+
+
+            Console.WriteLine(score);
+            roundNumber = 1;
+            playerHealth = 100;
+            enemyhealth = 50;
+            score = 0;
+
+
+            for (int timer = 10; timer <= 50; timer += 1)
+            {
+                Thread.Sleep(500);
+                int enemyAccuracy = random.Next(0, 5);
+                int playerAccuracy = random.Next(0, 2);
+
+
+                int randomHealthPickup = random.Next(0, 7);
+                int randomEnemyChance = random.Next(1, numberOfEnemies);
+
+                Console.WriteLine($"Enemy health: {enemyhealth}");
+                Console.WriteLine($"player health:\n {playerHealth}");
+                Thread.Sleep(400);
+
+                if (enemyAccuracy >= 3)
+                {
+                    var filePath5 = Path.Combine(Directory.GetCurrentDirectory(), "oww.wav");
+                    var soundPlayer5 = new SoundPlayer(filePath5);
+                    soundPlayer5.Play();
+                    playerHealth -= enemyDamage;
+                    Helper.WriteLine("player Hit!\n", Colors.lightRed);
+                    Colorful.Console.ForegroundColor = Colors.defaultColor;
+                    Thread.Sleep(1000);
+                }
+                else { }
+
+
+
+                if (playerAccuracy >= 1)
+                {
+                    enemyhealth -= playerDamage;
+             
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "LanderDie.wav");
+                    var soundPlayer = new SoundPlayer(filePath);
+                    soundPlayer.Play();
+                    Helper.WriteLine("enemy Hit!\n", Colors.forestGreen);
+                    Colorful.Console.ForegroundColor = Colors.defaultColor;
+                    score += 10;
+                    Thread.Sleep(1000);
+
+
+                }
+                else { }
+
+
+
+                Console.ResetColor();
+                int healthPickupChance = 0;
+
+                if (playerHealth <= 80 && randomHealthPickup >= 5)
+                {
+                    healthPickupChance = random.Next(1, 40);
+                    if (healthPickupChance <= 20)
+                    {
+                        playerHealth += 10;
+                        Colorful.Console.ForegroundColor = Colors.forestGreen;
+                        Console.WriteLine("Congrats, you picked up a health pickup!");
+                        Console.WriteLine("Player health +10\n");
+                        Colorful.Console.ForegroundColor = Colors.defaultColor;
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "powerUp.wav");
+                        var soundPlayer = new SoundPlayer(filePath);
+                        soundPlayer.Play();
+                        Thread.Sleep(1000);
+
+
+                    }
+
+
+
+                }
+
+                else
+                {
+
+                }
+
+       
+                    if (playerHealth <= 0)
+                    {
+                    var filePath4 = Path.Combine(Directory.GetCurrentDirectory(), "wahWah.wav");
+                    var soundPlayer4 = new SoundPlayer(filePath4);
+                    soundPlayer4.Play();
+                    Console.WriteLine($"Game over! You reached round number {roundNumber}. Your total score is: {score}");
+                        Colorful.Console.ForegroundColor = Colors.defaultColor;
+
+                        running = false;
+                        break;
+                    }
+                    if (enemyhealth <= 0)
+                    {
+                        Colorful.Console.ForegroundColor = Colors.defaultColor;
+                    var filePath1 = Path.Combine(Directory.GetCurrentDirectory(), "fanfare.wav");
+                    var soundPlayer = new SoundPlayer(filePath1);
+                    soundPlayer.Play();
+                    Console.WriteLine($"Congratulations! You defeated the alien invader in round {roundNumber}. Your total score is: {score}");
+                        score += 100;
+                    enemyDamage = enemyDamage + 5;
+                    enemyhealth = enemyhealth + 10;
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadLine();
+                        roundNumber++;
+                    numberOfEnemies++;
+                        enemyhealth = 50;
+                        Thread.Sleep(1000);
+                        Console.Clear();
+                    var filePath3 = Path.Combine(Directory.GetCurrentDirectory(), "nextLevel.wav");
+                    var soundPlayer3 = new SoundPlayer(filePath3);
+                    soundPlayer3.Play();
+                    Thread.Sleep(1000);
+
+                }
+
+                Thread.Sleep(400);
+                }
+
+                Console.ReadLine();
+            }
+
+
+
+
+
+        }
     }
-}
+
+    
+
+
+
+    
+
 
 
 
