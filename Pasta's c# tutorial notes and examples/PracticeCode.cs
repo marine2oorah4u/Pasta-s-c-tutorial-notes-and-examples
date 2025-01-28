@@ -6,6 +6,7 @@ using NAudio.Wave;
 using System.Diagnostics;
 using System.Media;
 using System.Security.Cryptography.X509Certificates;
+using System.Diagnostics.CodeAnalysis;
 
 namespace PastasCSharpNotesAndExamples
 {
@@ -2099,7 +2100,7 @@ namespace PastasCSharpNotesAndExamples
                 if (playerAccuracy >= 1)
                 {
                     enemyhealth -= playerDamage;
-             
+
                     var filePath = Path.Combine(Directory.GetCurrentDirectory(), "LanderDie.wav");
                     var soundPlayer = new SoundPlayer(filePath);
                     soundPlayer.Play();
@@ -2144,35 +2145,35 @@ namespace PastasCSharpNotesAndExamples
 
                 }
 
-       
-                    if (playerHealth <= 0)
-                    {
+
+                if (playerHealth <= 0)
+                {
                     var filePath4 = Path.Combine(Directory.GetCurrentDirectory(), "wahWah.wav");
                     var soundPlayer4 = new SoundPlayer(filePath4);
                     soundPlayer4.Play();
                     Console.WriteLine($"Game over! You reached round number {roundNumber}. Your total score is: {score}");
-                        Colorful.Console.ForegroundColor = Colors.defaultColor;
+                    Colorful.Console.ForegroundColor = Colors.defaultColor;
 
-                        running = false;
-                        break;
-                    }
-                    if (enemyhealth <= 0)
-                    {
-                        Colorful.Console.ForegroundColor = Colors.defaultColor;
+                    running = false;
+                    break;
+                }
+                if (enemyhealth <= 0)
+                {
+                    Colorful.Console.ForegroundColor = Colors.defaultColor;
                     var filePath1 = Path.Combine(Directory.GetCurrentDirectory(), "fanfare.wav");
                     var soundPlayer = new SoundPlayer(filePath1);
                     soundPlayer.Play();
                     Console.WriteLine($"Congratulations! You defeated the alien invader in round {roundNumber}. Your total score is: {score}");
-                        score += 100;
+                    score += 100;
                     enemyDamage = enemyDamage + 5;
                     enemyhealth = enemyhealth + 10;
-                        Console.WriteLine("Press any key to continue");
-                        Console.ReadLine();
-                        roundNumber++;
+                    Console.WriteLine("Press any key to continue");
+                    Console.ReadLine();
+                    roundNumber++;
                     numberOfEnemies++;
-                        enemyhealth = 50;
-                        Thread.Sleep(1000);
-                        Console.Clear();
+                    enemyhealth = 50;
+                    Thread.Sleep(1000);
+                    Console.Clear();
                     var filePath3 = Path.Combine(Directory.GetCurrentDirectory(), "nextLevel.wav");
                     var soundPlayer3 = new SoundPlayer(filePath3);
                     soundPlayer3.Play();
@@ -2181,17 +2182,636 @@ namespace PastasCSharpNotesAndExamples
                 }
 
                 Thread.Sleep(400);
-                }
+            }
 
-                Console.ReadLine();
+            Console.ReadLine();
+        }
+
+
+        public static void while_loops()
+        {
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    Console.WriteLine(i);
+            //}
+
+            Console.Write("Enter the first number:\n ");
+            string numberAInput = Console.ReadLine();
+            int numberA = Convert.ToInt32(numberAInput);
+
+            Console.Write("Enter the Second number:\n ");
+            string numberBInput = Console.ReadLine();
+            int numberB = Convert.ToInt32(numberBInput);
+
+            int answer = numberA * numberB;
+            int actualAnswer = 0;
+
+
+
+            Console.WriteLine($"value of {numberA} x {numberB}: ");
+
+
+
+            //while (answer != actualAnswer)
+            //{
+            //    Console.WriteLine("enter your answer: \n");
+            //    string answerInput = Console.ReadLine();
+            //   actualAnswer = Convert.ToInt32(answerInput);
+
+
+            //    if (answer != actualAnswer)
+            //    {
+            //        Console.WriteLine("Close, but it was wrong.\n");
+            //    }
+            //}
+            do
+            {
+                Console.WriteLine("enter your answer: \n");
+                string answerInput = Console.ReadLine();
+                actualAnswer = Convert.ToInt32(answerInput);
+
+
+                if (answer != actualAnswer)
+                {
+                    Console.WriteLine("Close, but it was wrong.\n");
+                }
+            } while (answer != actualAnswer);  //  will do code in do 1 time and re check the code in the do 
+
+            //  code in while loop depends on condition to be true
+            // do loop, 1st interation does not depend on anything, except 2nd, 3rd, 4th, etc
+
+
+            Console.WriteLine("well done.");
+
+            Console.ReadLine();
+        }
+
+        public static void while_loop_Exercise_01()
+        {
+            // Task: Print the numbers from 1 to 5 using a while loop.
+            // Goal: Understand the basic syntax of a while loop and how to use it to repeat a task.
+            // Constraints: Use a while loop and a counter variable to print the numbers.
+
+            int number = 1;
+
+            while (number != 6)
+            {
+                Console.WriteLine(number);
+                number++;
+            }
+
+
+            Console.ReadLine();
+
+        }
+        public static void while_loop_Exercise_02()
+        {
+            // Task: Ask the user for a number, and then print the numbers from 1 to that number using a while loop.
+            // Goal: Understand how to use a while loop to repeat a task based on user input.
+            // Constraints: Use a while loop and a counter variable to print the numbers.
+
+            Console.WriteLine("Let's count some numbers.\nWhat do you want to count up from?\n\nChoose a number between 0-25");
+            int number = Convert.ToInt32(Console.ReadLine());
+
+            if (number < 0 || number > 25)
+            {
+                Console.WriteLine("Please pick a number between 0-25.");
+                return;
+            }
+
+            int counter = 1;
+            while (counter <= number)
+            {
+                Console.WriteLine(counter);
+                counter++;
+            }
+
+            Console.ReadLine();
+        }
+
+
+
+        public static void while_loop_Exercise_03()
+        {
+            // Task: Write a program that asks the user for a password and keeps asking until the correct password is entered.
+            // Goal: Understand how to use a while loop to repeat a task until a certain condition is met.
+            // Constraints: Use a while loop and a boolean variable to control the loop.
+            bool correctUserInput = true;
+            Helper.WriteLine("Choose an Option:\n", Colors.goldenYellow);
+
+            Helper.write("1: ", Colors.numberColor);
+            Helper.write("login\n", Colors.peach);
+            Helper.write("2: ", Colors.numberColor);
+            Helper.write("create account\n", Colors.peach);
+            Colorful.Console.ForegroundColor = Colors.numberColor;
+
+            int userChoice = Convert.ToInt32(Console.ReadLine());
+
+
+            switch (userChoice)
+            {
+                case 1:
+                    logIn();
+                    break;
+                case 2:
+                    createUsername();
+                    break;
+                default:
+                    Helper.WriteLine("Please choose a valid option", Colors.lightRed);
+                    Colorful.Console.ForegroundColor = Colors.numberColor;
+
+                    correctUserInput = false;
+
+                    break;
+
             }
 
 
 
 
 
+
+
+            Console.ReadLine();
+
         }
+
+        static void logIn()
+        {
+            while_loop_Exercise_03();
+        }
+
+        static void createUsername()
+        {
+
+            List<string> userName = new List<string>();
+            {
+
+            }
+
+            List<string> password = new List<string>();
+            {
+
+            }
+
+
+            Helper.write("Username:\t", Colors.goldenYellow);
+            string userInput = Console.ReadLine();
+
+
+
+            //if (userName.Contains(userInput))
+            //{
+            //    if (condition2)
+            //    {
+            //        // code to execute if both conditions are true
+            //    }
+            //    else
+            //    {
+            //        password.Add(userInput);
+            //    }
+            //}
+            //else
+            //{
+            //    userName.Add(userInput);
+            //}
+
+
+            //        if (userName.Contains(userInput))
+            //        {
+            //            if (password.Contains(userInput))
+            //            {
+            //                Console.WriteLine("Error: Value already exists in the list.");
+            //                {
+            //                    Console.WriteLine("Error: Value already exists in the list.");
+            //                }
+            //            }
+
+
+            //            userName.Add(userInput);
+            //        }
+            //        userName.Add(userInput);
+            //    }
+            //}
+            Helper.write("Password:\t", Colors.goldenYellow);
+            userInput = Console.ReadLine();
+
+            if (userName.Contains(userInput))
+            {
+                Console.WriteLine("Error: Value already exists in the list.");
+            }
+            else
+            {
+                userName.Add(userInput);
+            }
+        }
+
+
+        public static void nested_if_statements_exercise_01()
+        {
+            // Create a program that simulates a theme park ride
+            // The ride has certain restrictions and requirements that must be met before a rider can board
+
+            // Define variables
+            string rideName = "The Rollercoaster of Regret";
+            int riderHeight =52; // in inches
+            int riderAge = 77; // in years
+            bool hasHealthInsurance = true; // true or false
+
+            // Requirements:
+            // The rider must be at least 48 inches tall to ride
+            // The rider must be at least 12 years old to ride
+            // The rider must have health insurance to ride
+
+            // Create a nested if statement that checks if the rider meets all the requirements
+            // If they do, print a message saying "You can ride the rollercoaster!"
+            // If they don't meet one or more of the requirements, print a message explaining why they can't ride
+
+            // Your code goes here...
+
+            if (rideName == "The Rollercoaster of Regret")
+            {
+                if (riderHeight >= 48)
+                {
+                    if (riderAge >= 12)
+                    {
+                        if (hasHealthInsurance == true) 
+                        {
+                            Console.WriteLine("You meet all requirements, please enjoy the ride");
+                        }
+                        else 
+                        {
+                            Console.WriteLine("PLEASE DONT DIE");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("sorry, you are too young to enter this ride");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("sorry, you are too short to ride this");
+                }
+            }
+            else
+            {
+                Console.WriteLine("this is the wrong ride. are you lost?");
+            }
+        
+            Console.ReadLine();
+        }
+
+        public static void nested_if_statements_exercise_02()
+        {
+            // Create a program that simulates a university admission system
+            // The program should check if a student is eligible for admission based on their GPA and test scores
+
+            // Define variables
+            double gpa = 3.5; // the student's GPA
+            int mathScore = 80; // the student's math test score
+            int englishScore = 20; // the student's English test score
+
+            // Requirements:
+            // The student must have a GPA of at least 3.0 to be eligible for admission
+            // The student must have a math test score of at least 70 to be eligible for admission
+            // The student must have an English test score of at least 80 to be eligible for admission
+            // If the student meets all the requirements, display a message saying "You are eligible for admission"
+            // If the student does not meet one or more of the requirements, display a message explaining why they are not eligible
+
+            if (gpa < 3.0)
+            {
+                Console.WriteLine("Your GPA is too low for admission");
+            }
+            else if (mathScore < 70)
+            {
+                Console.WriteLine("Your math score is too low for admission");
+            }
+            else if (englishScore < 80)
+            {
+                Console.WriteLine("Your English score is too low for admission");
+            }
+            else
+            {
+                Console.WriteLine("You are eligible for admission");
+            }
+
+            Console.ReadLine();
+        }
+
+        public static void nested_if_statements_exercise_03()
+        {
+            // Create a program that determines the grade of a student based on their score
+            // The program should ask the user to enter the student's score
+            // The program should display the grade based on the following criteria:
+            // 90-100: A
+            // 80-89: B
+            // 70-79: C
+            // 60-69: D
+            // Below 60: F
+            // However, if the student is in their first year, the grading criteria is different:
+            // 80-100: A
+            // 70-79: B
+            // 60-69: C
+            // Below 60: F
+
+            // Define variables
+            int score; // the student's score
+            int year; // the student's year
+
+            // Requirements:
+            // The program should ask the user to enter the student's score and year
+            // The program should display the grade based on the criteria above
+            // The program should use nested if statements to handle the different grading criteria
+
+            // Your code goes here...
+
+
+
+            Console.WriteLine("lets grade tests!\n");
+            Thread.Sleep(1000);
+
+            Console.WriteLine("what was the score of your test?");
+            score = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("what grade level are you?. Are you year 1, or year 2?");
+            year = Convert.ToInt32(Console.ReadLine());
+
+
+            if (year == 1)
+            {
+                if (score >= 90 && score <= 100)
+                {
+                    Console.WriteLine("your grade is an A. Well Done");
+                }
+                else if (score >= 80 && score < 90)
+                {
+                    Console.WriteLine("your grade is a B");
+                }
+                else if (score >= 70 && score < 80)
+                {
+                    Console.WriteLine(" your grade is a C");
+                }
+                else if (score >= 60 && score < 70)
+                {
+                    Console.WriteLine("your grade is a D");
+                }
+                else
+                {
+                    Helper.writeLine("You failed the test!", Colors.lightRed);
+                }
+            }
+            else if (year == 2)
+            {
+                if (score >= 80 && score <= 100)
+                {
+                    Console.WriteLine("your grade is an A. Well Done");
+                }
+                else if (score >= 70 && score < 80)
+                {
+                    Console.WriteLine("your grade is a B");
+                }
+                else if (score >= 60 && score < 70)
+                {
+                    Console.WriteLine(" your grade is a C");
+                }
+                else
+                {
+                    Helper.writeLine("You failed the test!", Colors.lightRed);
+                }
+            }
+            else
+            {
+                Console.WriteLine("You are in the wrong classroom");
+            }
+
+
+            Console.ReadLine();
+        }
+
+
+
+
+        public static void nested_if_statements_exercise_04()
+        {
+
+            // Define some variables
+            string favoriteCoffee = "";
+            string preferredSize = "Large";
+            string preferredFlavor = "Vanilla";
+
+
+            // order of opperation
+            /*
+             *  1 2 3 = true
+             *  if 3 is false
+             *  1 2 correct, and 3b is checked
+             */
+
+            // Check if the coffee shop has the favorite coffee
+            if (favoriteCoffee == "Latte")
+            {
+                // If they have latte, check if they have the preferred size
+                if (preferredSize == "Large")
+                {                                                                                                // this is the beginning check. if this fails, then the final else happens
+                    // If they have large size, check if they have the preferred flavor             
+                    if (preferredFlavor == "Caramel")
+                    {
+                        Console.WriteLine("Perfect! They have a large caramel latte.");                          // this checks to see if they have caramel, or this if statement is true or not
+                                                                                                                 //it will check and execute everything in this if statement block if Large is true
+                                                                                                                 // if theres a large, but no caramel, it will go the else for no flavor
+                    }
+                    else if (preferredFlavor == "Vanilla")
+                    {
+                        Console.WriteLine("They have a large vanilla latte.");                                          // if caramel is false but is still a large, it will check for vanilla
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sorry, they don't have your preferred flavor.");                             // if large but none of the available flavors are there, then it will default to this
+                    }
+                }
+                else if (preferredSize == "Medium")                                                                     // if its not a large, but is a medium, it will go to this code
+                                                                                                                        // this block has no flavor checks, so it wont check for that statement
+                {
+                    Console.WriteLine("They have a medium latte.");                                                     //if medium is true, then it will say this...still ignoring flavor because flavor isnt a possible option
+                }
+                else
+                {
+                    Console.WriteLine("Sorry, they don't have your preferred size.");                                   // if the size isnt true, i.e: no large or medium, it will always default as a last resort to no size
+                                                                                                                        // if no size or flavor available, but the very beginning condition is true, i.e: latte, it will still say
+                                                                                                                        // they dont have your preferred size, but still true for coffee, being that is still true. flavor
+                                                                                                                        // is not counted for at this point
+                }
+            }
+            else
+            {
+                Console.WriteLine("Sorry, they don't have your favorite coffee.");                                      //  if the 1st check is false, i.e: type of coffee available, it will always default to this
+                                                                                                                        // being this is the only coffee. even if the size and flavor are available, this will be default result
+            }
+
+
+            Console.ReadLine();
+        }
+
+        public static void nested_if_statements_exercise_05()
+        {
+            // Task 5: Nested If Statement Exercise
+            // -------------------------------------
+            // Write a C# program that prompts the user to input a year.
+            // First, check if the year is a leap year.
+            // A year is a leap year if:
+            // - It is divisible by 4, but not divisible by 100, or
+            // - It is divisible by 400.
+            // If the year is a leap year, further check if the year is a century year (divisible by 100).
+            // Print whether the year is a leap year, a century leap year, or a common year.
+
+
+
+            Console.Write( "enter the current year:    ");
+            int year = Convert.ToInt32 (Console.ReadLine());
+            Console.WriteLine("");
+
+            Console.WriteLine( "lets dive into this year some more....");
+            Thread.Sleep(1000);
+            Console.Clear();
+            Thread.Sleep(1000);
+            Console.Write("Loading ");
+
+            for (int i = 1; i < 10; i++)
+            { 
+                Console.Write(". ");
+                Thread.Sleep(400);
+            }
+
+            Console.WriteLine("\n");
+
+
+           String[] leapYearFacts = new String[]
+                {
+            "Some Fun Facts about Leap Years:",
+            "1. A leap year has 366 days instead of the usual 365 days.",
+            "2. Leap years occur every 4 years to help synchronize the calendar year with the Earth's orbit around the Sun.",
+            "3. A year is a leap year if it is divisible by 4.",
+            "4. However, if the year is divisible by 100, it is not a leap year, unless...",
+            "5. The year is also divisible by 400, in which case it is a leap year.",
+            "6. For example, the year 2000 was a leap year, while 1900 was not.",
+            "7. Leap year adjustments prevent the calendar from drifting over time.",
+            "8. February 29 is the additional day in a leap year, known as 'Leap Day'."
+                };
+
+            foreach (string fact in leapYearFacts)
+            {
+                foreach (char c in fact)
+                    {
+                        Console.Write(c);
+                        Thread.Sleep(25); // Delays for 50 milliseconds to simulate typing
+                    }
+                
+                Thread.Sleep(400);
+
+                Console.WriteLine("");
+                }
+
+            Thread.Sleep(1000);
+
+            Console.WriteLine("\n\n");
+
+            Console.WriteLine( "Now lets take a look at your year you entered;");
+            Thread.Sleep(1000);
+            Console.WriteLine($"You entered {year}. Based off of the facts above: \n\n ");
+            Thread.Sleep(1000);
+
+
+            // Task 5: Nested If Statement Exercise
+            // -------------------------------------
+            // Write a C# program that prompts the user to input a year.
+            // First, check if the year is a leap year.
+            // A year is a leap year if:
+            // - It is divisible by 4, but not divisible by 100, or
+            // - It is divisible by 400.
+            // If the year is a leap year, further check if the year is a century year (divisible by 100).
+            // Print whether the year is a leap year, a century leap year, or a common year.
+
+            bool isLeapYear = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            if (isLeapYear)
+            {
+                Helper.WriteLine($"{year} is in fact a leap year.\n", Colors.forestGreen);
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "woo.wav");
+                var soundPlayer = new SoundPlayer(filePath);
+                soundPlayer.Play();
+                Thread.Sleep(1000);
+
+
+            }
+            else
+            {
+                Helper.WriteLine($"{year} is in fact not a leap year.\n", Colors.brightRed);
+                var filePath2 = Path.Combine(Directory.GetCurrentDirectory(), "aww.wav");
+                var soundPlayer2 = new SoundPlayer(filePath2);
+                soundPlayer2.Play();
+                Thread.Sleep(2500);
+            }
+            Thread.Sleep(1000);
+
+            // Checking if it's a century year
+            bool isCenturyYear = year % 100 == 0;
+            if (isCenturyYear)
+            {
+                Helper.WriteLine($"{year} is a century year.\n", Colors.forestGreen);
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "woo.wav");
+                var soundPlayer = new SoundPlayer(filePath);
+                soundPlayer.Play();
+                Thread.Sleep(1000);
+            }
+            else
+            {
+                Helper.WriteLine($"{year} is not a century year.\n", Colors.brightRed);
+                var filePath2 = Path.Combine(Directory.GetCurrentDirectory(), "aww.wav");
+                var soundPlayer2 = new SoundPlayer(filePath2);
+                soundPlayer2.Play();
+                Thread.Sleep(2500);
+            }
+            Thread.Sleep(1000);
+
+            //  checking  for common year if it's not a leap year and not a century leap year
+            bool isCommonYear = !isLeapYear;
+            if (isCommonYear)
+            {
+                Helper.WriteLine($"{year} is a common year.\n", Colors.forestGreen);
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "woo.wav");
+                var soundPlayer = new SoundPlayer(filePath);
+                soundPlayer.Play();
+                Thread.Sleep(1000);
+            }
+            else
+            {
+                Helper.WriteLine($"{year} is not a common year.", Colors.brightRed);
+                var filePath2 = Path.Combine(Directory.GetCurrentDirectory(), "aww.wav");
+                var soundPlayer2 = new SoundPlayer(filePath2);
+                soundPlayer2.Play();
+                Thread.Sleep(2500);
+            }
+
+
+            Console.ReadLine();
+
+        }
+
+
+
     }
+
+
+}
+
+
+    
+
+
+
+    
+    
+
 
     
 

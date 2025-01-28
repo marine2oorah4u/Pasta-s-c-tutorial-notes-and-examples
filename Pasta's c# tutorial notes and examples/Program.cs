@@ -372,7 +372,7 @@ namespace PastasCSharpNotesAndExamples
             //ProgramStart.start();
             Random random = new Random();
 
-            PracticeCode.for_loop_exercise_04();
+            PracticeCode.nested_if_statements_exercise_05();
 
 
         }
